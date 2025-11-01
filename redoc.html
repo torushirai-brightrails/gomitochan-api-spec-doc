@@ -5,6 +5,24 @@
   <title>ごみ当ちゃん 公開API (Redoc)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+  <style>
+  @media (prefers-color-scheme: dark) {
+    .redoc-wrap input[type="search"] {
+      color: #e0e0e0 !important;
+      background-color: #2a2a2a !important;
+      border-color: #555 !important;
+    }
+
+    .redoc-wrap input[type="search"]::placeholder {
+      color: #cccccc !important;
+    }
+
+    .redoc-wrap input[type="search"]:focus {
+      color: #e0e0e0 !important;
+      background-color: #2a2a2a !important;
+    }
+  }
+</style>
   <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
 </head>
 <body>
@@ -30,7 +48,8 @@
             post: '#3498db',
             put: '#f1c40f',
             delete: '#e74c3c'
-          }
+          },
+          border: prefersDark ? '#555' : '#ddd'
         },
         spacing: {
           unit: 8
