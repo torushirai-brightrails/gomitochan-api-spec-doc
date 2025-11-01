@@ -47,6 +47,7 @@
     }
     .swagger { background-color: #85c44b; }
     .redoc { background-color: #e74c3c; }
+    .link-btn { background-color: #3498db; } /* 新規リンク用ボタン */
     .btn:hover { transform: scale(1.05); opacity: 0.9; }
     footer {
       position: fixed;
@@ -61,8 +62,16 @@
   <h1>ごみ当ちゃん 公開API (Beta)</h1>
   <p class="version">API Version: 1.0.0 | Published: 2025-11-01</p>
   <p>ドキュメントの表示形式を選択してください。</p>
+
+  <!-- API ドキュメントボタン -->
   <a href="swagger.html" class="btn swagger">⚙️ Swagger UI で見る</a>
   <a href="redoc.html" class="btn redoc">📘 Redoc で見る</a>
+
+  <!-- 関連リンクボタン -->
+  <div style="margin-top:40px;">
+    <a href="https://gomitochan.jp" class="btn link-btn">🏠 ごみ当ちゃん ホームページ</a>
+    <a href="https://gomitochan.jp/contact" class="btn link-btn">✉ ごみ当ちゃん お問い合わせ</a>
+  </div>
 
   <footer>© 2025 ごみ当ちゃん | Powered by Swagger UI & Redoc</footer>
 </body>
