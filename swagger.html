@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css">
   <style>
-  /* infoタイトル、descriptionなどの文字色をダークモード時に白にする */
   @media (prefers-color-scheme: dark) {
     .swagger-ui .info h1,
     .swagger-ui .info h2,
@@ -15,7 +14,6 @@
     .swagger-ui .opblock-summary-description,
     .swagger-ui .opblock-description-wrapper p,
     .swagger-ui .opblock-tag,
-    .swagger-ui span,
     .swagger-ui li,
     .swagger-ui a {
       color: #e0e0e0 !important;
@@ -40,14 +38,21 @@
 
     .swagger-ui table,
     .swagger-ui table th,
-    .swagger-ui table td .parameters-col_name {
+    .swagger-ui table td,
+    .swagger-ui .parameter__name,
+    .swagger-ui .parameter__type,
+    .swagger-ui .parameter__extension,
+    .swagger-ui .parameter__in,
+    .swagger-ui .response-col_status,
+    .swagger-ui .response-col_links
+     {
       color: #e0e0e0 !important;
       border-color: #444 !important;
     }
 
     .swagger-ui table,
     .swagger-ui table tbody,
-    .swagger-ui table thead {
+    .swagger-ui table thead tr td {
       background-color: #1e1e1e !important;
     }
   }
