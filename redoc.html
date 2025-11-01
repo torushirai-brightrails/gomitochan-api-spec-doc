@@ -7,19 +7,10 @@
   <link rel="stylesheet" href="style.css">
   <style>
   @media (prefers-color-scheme: dark) {
-    .redoc-wrap input[type="search"] {
+    .redoc-wrap a,
+    .redoc-wrap .ilnacv {
       color: #e0e0e0 !important;
-      background-color: #2a2a2a !important;
-      border-color: #555 !important;
-    }
-
-    .redoc-wrap input[type="search"]::placeholder {
-      color: #cccccc !important;
-    }
-
-    .redoc-wrap input[type="search"]:focus {
-      color: #e0e0e0 !important;
-      background-color: #2a2a2a !important;
+      border-color: #e0e0e0 !important;
     }
   }
 </style>
@@ -41,7 +32,7 @@
           primary: { main: '#2c3e50' },
           text: {
             primary: prefersDark ? '#e0e0e0' : '#333',
-            secondary: prefersDark ? '#cccccc' : '#666'
+            secondary: prefersDark ? '#e0e0e0' : '#333'
           },
           http: {
             get: '#6bbd5b',
