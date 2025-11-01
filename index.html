@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ごみ当ちゃん 公開API ドキュメント</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+      text-align: center;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 80px 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    :root {
+      --bg: #f4f6f8;
+      --text: #333;
+      --primary: #2c3e50;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --text: #e0e0e0;
+      }
+    }
+    h1 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .version {
+      color: gray;
+      font-size: 0.9em;
+      margin-bottom: 30px;
+    }
+    .btn {
+      display: inline-block;
+      margin: 20px;
+      padding: 14px 28px;
+      font-size: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .swagger { background-color: #85c44b; }
+    .redoc { background-color: #e74c3c; }
+    .btn:hover { transform: scale(1.05); opacity: 0.9; }
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      font-size: 0.8em;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h1>ごみ当ちゃん 公開API (Beta)</h1>
+  <p class="version">API Version: 1.0.0 | Published: 2025-11-01</p>
+  <p>ドキュメントの表示形式を選択してください。</p>
+  <a href="swagger.html" class="btn swagger">⚙️ Swagger UI で見る</a>
+  <a href="redoc.html" class="btn redoc">📘 Redoc で見る</a>
+
+  <footer>© 2025 ごみ当ちゃん Project | Powered by Swagger UI & Redoc</footer>
+</body>
+</html>

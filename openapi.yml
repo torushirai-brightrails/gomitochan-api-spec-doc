@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: ごみ当ちゃん 公開API (Beta)
+  version: 1.0.0
+paths:
+  /v1/garbage/garbageitems:
+    get:
+      operationId: getGarbageItems
+      description: ごみ当ちゃん 自治体別ごみ分別検索を提供する。
+      summary: ごみ当ちゃん 自治体別ごみ分別検索API
+      parameters:
+      - in: query
+        name: city
+        schema:
+          type: string
+        description: '市区町村名（例: 中央区）'
+      - in: query
+        name: item
+        schema:
+          type: string
+        description: 'ごみ品目（例: アイロン）'
+      - in: query
+        name: pref
+        schema:
+          type: string
+        description: '都道府県名（例: 東京都）'
+      tags:
+      - v1
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    description: 検索結果件数
+                  items:
+                    type: array
+                    description: 検索結果のアイテム一覧
+                    items:
+                      type: object
+                      properties:
+                        item:
+                          type: string
+                          description: 品目名
+                        collection_item:
+                          type: string
+                          description: 分別区分
+                        howto_disposal:
+                          type: string
+                          description: 排出方法
+                        fee:
+                          type: integer
+                          description: 手数料（-1は該当なし）
+                        notice:
+                          type: string
+                          description: 備考・注意事項
+                        score:
+                          type: number
+                          description: 検索一致スコア
+              examples:
+                件数がある場合(通常ケース):
+                  value:
+                    count: 2
+                    items:
+                    - item: アイロン
+                      collection_item: 燃やさないごみ
+                      howto_disposal: ''
+                      fee: -1
+                      notice: ''
+                      score: 1.0
+                    - item: アイロン台
+                      collection_item: 燃やさないごみ
+                      howto_disposal: ''
+                      fee: -1
+                      notice: 1メートル以上の物は粗大ごみ（有料処分）
+                      score: 0.99
+                件数がない場合:
+                  value:
+                    count: 0
+                    items: []
+          description: ''
+        '400':
+          content:
+            application/json:
+              schema:
+                description: リクエストパラメータが不正な場合
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: エラー内容
+                example:
+                  detail: pref(都道府県名) と city(市区町村名) は必須です
+              examples:
+                入力エラー例（400）:
+                  value:
+                    detail: pref(都道府県名) と city(市区町村名) は必須です
+                  summary: 必須パラメータが欠落している場合
+          description: ''
+        '403':
+          content:
+            application/json:
+              schema:
+                description: 認証に失敗した場合
+                type: object
+                properties:
+                  detail:
+                    type: string
+                    description: エラー内容
+                example:
+                  detail: 認証情報がないか、または無効な認証情報です
+              examples:
+                認証エラー例（403）:
+                  value:
+                    detail: 認証情報がないか、または無効な認証情報です
+                  summary: APIキーがない、または無効な場合
+          description: ''
+  /v1/utcp:
+    get:
+      operationId: getUtcpManual
+      description: ごみ当ちゃんが提供する自治体別ごみ分別検索ツールのUTCPマニュアルを提供する。
+      summary: ごみ当ちゃん UTCP マニュアル取得
+      tags:
+      - v1
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  manual_version:
+                    type: string
+                    description: マニュアルのバージョン
+                    example: 1.0.0
+                  utcp_version:
+                    type: string
+                    description: UTCP のバージョン
+                    example: 1.0.2
+                  info:
+                    type: object
+                    description: API情報
+                    properties:
+                      title:
+                        type: string
+                        description: APIタイトル
+                        example: ごみ当ちゃん 自治体別ごみ分別検索API
+                      version:
+                        type: string
+                        description: APIバージョン
+                        example: 1.0.0
+                  tools:
+                    type: array
+                    description: 利用可能なツール一覧
+                    items:
+                      type: object
+                      description: ツール情報 tools配下のモデル情報については「https://www.utcp.io/implementation」を参照してください。
+                      properties: {}
+              examples:
+                UTCPマニュアル取得時(通常ケース):
+                  value:
+                    manual_version: 1.0.0
+                    utcp_version: 1.0.2
+                    info:
+                      title: ごみ当ちゃん 自治体別ごみ分別検索API
+                      version: 1.0.0
+                    tools:
+                    - {}
+                  summary: UTCPマニュアル取得時
+          description: ''
+        '500':
+          content:
+            application/json:
+              schema:
+                type: object
+                detail: 内部サーバーエラー
+              examples:
+                内部サーバーエラー（500）:
+                  value:
+                    detail: 内部サーバエラーが発生しました
+                  summary: UTCPマニュアル取得時のエラー等
+          description: ''
+components: {}
