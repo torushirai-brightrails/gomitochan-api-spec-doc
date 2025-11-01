@@ -6,6 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css">
+  <style>
+  /* infoタイトル、descriptionなどの文字色をダークモード時に白にする */
+  @media (prefers-color-scheme: dark) {
+    .swagger-ui .topbar,
+    .swagger-ui .info,
+    .swagger-ui .opblock-summary-description,
+    .swagger-ui .opblock-description-wrapper {
+      color: #e0e0e0 !important;
+    }
+
+    .swagger-ui .opblock {
+      background-color: #1e1e1e !important;
+    }
+
+    .swagger-ui .opblock-summary {
+      background-color: #2a2a2a !important;
+    }
+
+    .swagger-ui .responses-wrapper {
+      background-color: #1e1e1e !important;
+      color: #e0e0e0 !important;
+    }
+  }
+</style>
 </head>
 <body>
   <a href="index.html" class="back-btn">🏠 ホームに戻る</a>

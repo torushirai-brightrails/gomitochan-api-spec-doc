@@ -14,8 +14,41 @@
   <footer>API Version 1.0.0 | © 2025 ごみ当ちゃん / tohrusan</footer>
 
   <script>
-    Redoc.init('openapi.json', {
-      scrollYOffset: 50
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    Redoc.init('./openapi.json', {
+      scrollYOffset: 50,
+      theme: {
+        colors: {
+          primary: { main: '#2c3e50' },
+          text: {
+            primary: prefersDark ? '#e0e0e0' : '#333',
+            secondary: prefersDark ? '#cccccc' : '#666'
+          },
+          http: {
+            get: '#6bbd5b',
+            post: '#3498db',
+            put: '#f1c40f',
+            delete: '#e74c3c'
+          }
+        },
+        spacing: {
+          unit: 8
+        },
+        typography: {
+          fontSize: '16px',
+          fontFamily: '"Segoe UI", "Hiragino Sans", sans-serif'
+        },
+        sidebar: {
+          backgroundColor: prefersDark ? '#1e1e1e' : '#f4f6f8'
+        },
+        rightPanel: {
+          backgroundColor: prefersDark ? '#1c1c1c' : '#fff'
+        },
+        codeBlock: {
+          backgroundColor: prefersDark ? '#2a2a2a' : '#f6f6f6'
+        }
+      }
     }, document.getElementById('redoc-container'));
   </script>
 </body>
