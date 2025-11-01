@@ -172,15 +172,19 @@ paths:
                   summary: UTCPマニュアル取得時
           description: ''
         '500':
+          description: 内部サーバーエラー
           content:
             application/json:
               schema:
                 type: object
-                detail: 内部サーバーエラー
+                properties:
+                  detail:
+                    type: string
+                    description: エラー内容
+                    example: 内部サーバエラーが発生しました
               examples:
                 内部サーバーエラー（500）:
                   value:
                     detail: 内部サーバエラーが発生しました
                   summary: UTCPマニュアル取得時のエラー等
-          description: ''
 components: {}
