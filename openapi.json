@@ -4,6 +4,12 @@
     "title": "ごみ当ちゃん 公開API (Beta)",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "https://api-gateway.gomitochan.net",
+      "description": "ごみ当ちゃん 公開API エンドポイント"
+    }
+  ],
   "paths": {
     "/v1/garbage/garbageitems": {
       "get": {
