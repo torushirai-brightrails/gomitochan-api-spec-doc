@@ -5,28 +5,64 @@
   <title>ごみ当ちゃん API 利用申込</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: "Segoe UI", "Hiragino Sans", sans-serif; margin: 40px; line-height: 1.6; }
-    h1 { color: #2c3e50; }
+    :root {
+      --bg: #ffffff;
+      --text: #333333;
+      --primary: #2c3e50;
+      --btn-bg: #3498db;
+      --btn-text: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --text: #e0e0e0;
+        --primary: #f4f6f8;
+        --btn-bg: #2980b9;
+        --btn-text: #ffffff;
+      }
+    }
+
+    body {
+      font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 40px;
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1, h2 { color: var(--primary); }
+
     a.button {
       display: inline-block;
       padding: 12px 24px;
       margin: 10px 0;
-      background-color: #3498db;
-      color: white;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
       text-decoration: none;
       border-radius: 8px;
       transition: 0.2s;
     }
     a.button:hover { opacity: 0.9; }
-    pre { background-color: #f4f4f4; padding: 12px; border-radius: 6px; overflow-x: auto; }
+
+    pre {
+      background-color: #f4f4f4;
+      color: var(--text);
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    @media (prefers-color-scheme: dark) {
+      pre { background-color: #1e1e1e; }
+    }
   </style>
 </head>
 <body>
   <h1>ごみ当ちゃん API 利用申込</h1>
 
   <h2>1. 利用申込フォーム</h2>
-  <p>API を利用する場合、下記フォームに必要事項を入力してください(** 準備中 **)：</p>
-  <a href="#" target="_blank" class="button">📝 利用申込フォームを開く</a>
+  <p>API を利用する場合、下記フォームに必要事項を入力してください：</p>
+  <a href="https://docs.google.com/forms/d/e/【GoogleFormID】/viewform" target="_blank" class="button">📝 利用申込フォームを開く</a>
 
   <h2>2. API 利用規約</h2>
   <p>API を利用する前に、以下の利用規約をご確認ください：</p>
@@ -38,7 +74,7 @@
 - API は「ごみ当ちゃん」が提供するサービスの一部として利用できます。
 - 不正なアクセスや大量リクエストは禁止します。
 
-2. 仕様変更
+2. 仕様変更・提供中止
 - API の仕様やレスポンスは予告なく変更される場合があります。
 - 必要に応じて、API の提供を通知なしに中止する場合があります。
 - 利用者は常に最新の仕様を確認してください。
@@ -50,7 +86,7 @@
 4. 知的財産権
 - API で取得できるデータの多くは、地方公共団体から提供されたオープンデータを基にしています。
 - API 利用者は、オープンデータの利用条件に従ってデータを使用してください。
-- API 自体のプログラムやドキュメントに関する著作権は「tohrusan」が保持します。
+- API 自体のプログラムやドキュメントに関する著作権は「ごみ当ちゃん」が保持します。
 - データの二次配布や商用利用は、オープンデータ提供元の条件および本規約に従う必要があります。
 
 5. 参照元
@@ -58,6 +94,5 @@
 
 © 2025 ごみ当ちゃん / tohrusan
   </pre>
-
 </body>
 </html>
