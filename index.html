@@ -5,28 +5,105 @@
   <title>ごみ当ちゃん 公開API (Beta)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* コンテンツ全体を中央寄せ */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+      background-color: var(--bg);
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    .version {
+      color: gray;
+      font-size: 0.9em;
+      margin-bottom: 30px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 30px;
+      border-radius: 12px;
+      color: #fff;
+      min-width: 220px;
+      text-align: center;
+      font-size: 1.1em;
+      text-decoration: none;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    /* 個別カードの色 */
+    .card.swagger { background-color: #85c44b; }
+    .card.redoc { background-color: #e74c3c; }
+    .card.apply { background-color: #3498db; }
+    
+    .card:hover { transform: scale(1.05); opacity: 0.9; }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .links a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    footer {
+      font-size: 0.8em;
+      color: gray;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <h1>ごみ当ちゃん 公開API (Beta)</h1>
   <p class="version">API Version: 1.0.0 | Published: 2025-11-01</p>
 
   <!-- API ドキュメントボタン -->
-  <div style="margin-top:40px;"></div>
+  <div class="card-container">
     <p>ドキュメントの表示形式を選択してください。</p>
-    <a href="swagger.html" class="btn">⚙️ Swagger UI で見る</a>
-    <a href="redoc.html" class="btn">📘 Redoc で見る</a>
+    <a href="swagger.html" class="card swagger">⚙️ Swagger UI で見る</a>
+    <a href="redoc.html" class="card redoc">📘 Redoc で見る</a>
   </div>
 
   <!-- API利用申込ボタン -->
-  <div style="margin-top:40px;">
+  <div class="card-container">
     <p>ごみ当ちゃん 公開APIにご興味がある方、使ってみたい方はこちらのリンクよりお進みください。</p>
-    <a href="api-apply.html" class="btn">📝 API 利用申込フォーム</a>
+    <a href="api-apply.html" class="card apply">📝 API 利用申込フォーム</a>
   </div>
 
   <!-- 関連リンクボタン -->
-  <div style="margin-top:40px;">
-    <a href="https://gomitochan.jp" class="btn">🏠 ごみ当ちゃん ホームページ</a>
-    <a href="https://gomitochan.jp/contact" class="btn">✉ ごみ当ちゃん 各種お問い合わせ</a>
+  <div class="links">
+    <a href="https://gomitochan.jp">🏠 ごみ当ちゃん ホームページ</a>
+    <a href="https://gomitochan.jp/contact">✉ ごみ当ちゃん 各種お問い合わせ</a>
   </div>
 
   <footer>© 2025 ごみ当ちゃん / tohrusan | Powered by Swagger UI & Redoc</footer>
