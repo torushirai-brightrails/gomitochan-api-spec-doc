@@ -12,10 +12,11 @@
     .swagger-ui .info h1,
     .swagger-ui .info h2,
     .swagger-ui .info p,
-    .swagger-ui .info span,
     .swagger-ui .opblock-summary-description,
     .swagger-ui .opblock-description-wrapper p,
     .swagger-ui .opblock-tag,
+    .swagger-ui span,
+    .swagger-ui li,
     .swagger-ui a {
       color: #e0e0e0 !important;
     }
@@ -39,7 +40,7 @@
 
     .swagger-ui table,
     .swagger-ui table th,
-    .swagger-ui table td {
+    .swagger-ui table td .parameters-col_name {
       color: #e0e0e0 !important;
       border-color: #444 !important;
     }
@@ -70,7 +71,7 @@
         layout: "StandaloneLayout",
         docExpansion: "none",
         defaultModelsExpandDepth: 1,
-        tryItOutEnabled: false
+        supportedSubmitMethods: []
       });
     };
   </script>
