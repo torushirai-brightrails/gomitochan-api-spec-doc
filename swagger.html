@@ -9,10 +9,13 @@
   <style>
   /* infoタイトル、descriptionなどの文字色をダークモード時に白にする */
   @media (prefers-color-scheme: dark) {
-    .swagger-ui .topbar,
-    .swagger-ui .info,
+    .swagger-ui .info h1,
+    .swagger-ui .info h2,
+    .swagger-ui .info p,
     .swagger-ui .opblock-summary-description,
-    .swagger-ui .opblock-description-wrapper {
+    .swagger-ui .opblock-description-wrapper p,
+    .swagger-ui .opblock-tag,
+    .swagger-ui a {
       color: #e0e0e0 !important;
     }
 
