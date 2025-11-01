@@ -1,0 +1,92 @@
+/* ===========================================
+   共通スタイル / ダークモード対応
+   =========================================== */
+
+/* カラートークン */
+:root {
+  --bg: #f4f6f8;
+  --text: #333;
+  --primary: #2c3e50;
+  --btn-bg: #3498db;
+  --btn-text: #fff;
+  --back-btn-bg: #7f8c8d;
+  --back-btn-text: #fff;
+}
+
+/* ダークモード切替 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --primary: #f4f6f8;
+    --btn-bg: #2980b9;
+    --btn-text: #ffffff;
+    --back-btn-bg: #555555;
+    --back-btn-text: #ffffff;
+  }
+}
+
+/* 全体レイアウト */
+body {
+  font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 40px;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2 {
+  color: var(--primary);
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+/* ===========================================
+   ボタンスタイル
+   =========================================== */
+a.btn, a.back-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 10px 0;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+/* 通常ボタン（例: Swagger / Redoc / Google Form） */
+a.btn {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+a.btn:hover {
+  opacity: 0.9;
+}
+
+/* 戻るボタン */
+a.back-btn {
+  background-color: var(--back-btn-bg);
+  color: var(--back-btn-text);
+}
+
+a.back-btn:hover {
+  opacity: 0.8;
+}
+
+/* ===========================================
+   <pre> 用スタイル（利用規約表示用）
+   =========================================== */
+pre {
+  background-color: #f4f4f4;
+  color: var(--text);
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre {
+    background-color: #1e1e1e;
+  }
+}

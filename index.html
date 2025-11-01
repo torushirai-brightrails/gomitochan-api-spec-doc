@@ -2,81 +2,31 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ごみ当ちゃん 公開API ドキュメント</title>
+  <title>ごみ当ちゃん 公開API (Beta)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: "Segoe UI", "Hiragino Sans", sans-serif;
-      text-align: center;
-      background-color: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 80px 20px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    :root {
-      --bg: #f4f6f8;
-      --text: #333;
-      --primary: #2c3e50;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #121212;
-        --text: #e0e0e0;
-        --primary: #f4f6f8;
-      }
-    }
-    h1 {
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-    .version {
-      color: gray;
-      font-size: 0.9em;
-      margin-bottom: 30px;
-    }
-    .btn {
-      display: inline-block;
-      margin: 20px;
-      padding: 14px 28px;
-      font-size: 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      color: #fff;
-      transition: transform 0.2s, opacity 0.2s;
-    }
-    .swagger { background-color: #85c44b; }
-    .redoc { background-color: #e74c3c; }
-    .link-btn { background-color: #3498db; } /* 新規リンク用ボタン */
-    .btn:hover { transform: scale(1.05); opacity: 0.9; }
-    footer {
-      position: fixed;
-      bottom: 10px;
-      width: 100%;
-      font-size: 0.8em;
-      color: gray;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>ごみ当ちゃん 公開API (Beta)</h1>
   <p class="version">API Version: 1.0.0 | Published: 2025-11-01</p>
-  <p>ドキュメントの表示形式を選択してください。</p>
 
   <!-- API ドキュメントボタン -->
-  <a href="swagger.html" class="btn swagger">⚙️ Swagger UI で見る</a>
-  <a href="redoc.html" class="btn redoc">📘 Redoc で見る</a>
+  <div style="margin-top:40px;"></div>
+    <p>ドキュメントの表示形式を選択してください。</p>
+    <a href="swagger.html" class="btn">⚙️ Swagger UI で見る</a>
+    <a href="redoc.html" class="btn">📘 Redoc で見る</a>
+  </div>
 
   <!-- API利用申込ボタン -->
   <div style="margin-top:40px;">
     <p>ごみ当ちゃん 公開APIにご興味がある方、使ってみたい方はこちらのリンクよりお進みください。</p>
-    <a href="api-apply.html" class="btn link-btn">📝 API 利用申込フォーム</a>
+    <a href="api-apply.html" class="btn">📝 API 利用申込フォーム</a>
   </div>
 
   <!-- 関連リンクボタン -->
   <div style="margin-top:40px;">
-    <a href="https://gomitochan.jp" class="btn link-btn">🏠 ごみ当ちゃん ホームページ</a>
-    <a href="https://gomitochan.jp/contact" class="btn link-btn">✉ ごみ当ちゃん お問い合わせ</a>
+    <a href="https://gomitochan.jp" class="btn">🏠 ごみ当ちゃん ホームページ</a>
+    <a href="https://gomitochan.jp/contact" class="btn">✉ ごみ当ちゃん 各種お問い合わせ</a>
   </div>
 
   <footer>© 2025 ごみ当ちゃん / tohrusan | Powered by Swagger UI & Redoc</footer>

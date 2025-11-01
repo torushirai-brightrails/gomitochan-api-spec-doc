@@ -1,59 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8" />
-    <title>ごみ当ちゃん 公開API (Redoc)</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background-color: var(--bg);
-        color: var(--text);
-        transition: background-color 0.3s, color 0.3s;
-      }
-      :root {
-        --bg: #ffffff;
-        --text: #333;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #121212;
-          --text: #e0e0e0;
-          --primary: #f4f6f8;
-        }
-      }
-      .api-title {
-        font-family: "Segoe UI", sans-serif;
-        text-align: center;
-        padding: 20px 0;
-        background-color: #2c3e50;
-        color: #fff;
-      }
-      footer {
-        text-align: center;
-        padding: 10px;
-        font-size: 0.8em;
-        color: gray;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="api-title">ごみ当ちゃん 公開API (Redoc)</div>
-    <redoc spec-url="openapi.json"
-      theme='{
-        "colors": { 
-          "primary": { "main": "#2c3e50" },
-          "background": { "main": "#fafafa" }
-        },
-        "typography": {
-          "fontFamily": "Segoe UI, Hiragino Sans, sans-serif",
-          "fontSize": "15px",
-          "headings": { "fontWeight": "600" }
-        }
-      }'
-    ></redoc>
-    <footer>API Version 1.0.0 | © 2025 ごみ当ちゃん / tohrusan</footer>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>ごみ当ちゃん 公開API (Redoc)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+</head>
+<body>
+  <a href="index.html" class="back-btn">🏠 ホームに戻る</a>
+  <div id="redoc-container"></div>
+
+  <footer>API Version 1.0.0 | © 2025 ごみ当ちゃん / tohrusan</footer>
+
+  <script>
+    Redoc.init('openapi.json', {
+      scrollYOffset: 50
+    }, document.getElementById('redoc-container'));
+  </script>
+</body>
 </html>
