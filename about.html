@@ -35,7 +35,7 @@
     header a {
       color: #fff;
       text-decoration: none;
-      background: #1e90ff;
+      background: #2c3e50;
       padding: 8px 16px;
       border-radius: 6px;
       font-weight: bold;
@@ -118,13 +118,11 @@
 
     <h2>利用申し込み</h2>
     <p>APIを利用するには、<strong>事前の利用申し込み</strong> が必要です。<br>
-      下の「利用申し込み」ボタンをクリックして申込フォーム（<code>api_apply.html</code>）へ進んでください。
+      下の「利用申し込み」ボタンをクリックして申込フォームへ進んでください。
     </p>
 
     <div>
-      <a href="api_apply.html" class="btn apply">📝 利用申し込み</a>
-      <a href="swagger.html" class="btn swagger">⚙️ Swagger UI で見る</a>
-      <a href="redoc.html" class="btn redoc">📘 Redoc で見る</a>
+      <a href="api-apply.html" class="btn apply">📝 利用申し込み</a>
     </div>
 
     <h2>利用方法</h2>
@@ -132,6 +130,12 @@
       <li>申し込み後に発行される <strong>認証キー（APIキー）</strong> を、HTTPヘッダー <code>X-Api-Key</code> に指定してAPIを呼び出します。</li>
       <li>提供しているAPIの詳細仕様は、上記の Swagger UI または Redoc ドキュメントで参照できます。</li>
     </ul>
+
+    <div>
+      <a href="swagger.html" class="btn swagger">⚙️ Swagger UI で見る</a>
+      <a href="redoc.html" class="btn redoc">📘 Redoc で見る</a>
+    </div>
+
   </main>
 
   <footer>
