@@ -13,7 +13,7 @@
   "paths": {
     "/v1/garbage/garbageitems": {
       "get": {
-        "operationId": "getGarbageItems",
+        "operationId": "getGarbageItemsByCity",
         "description": "ごみ当ちゃん 自治体別ごみ分別検索を提供する。",
         "summary": "ごみ当ちゃん 自治体別ごみ分別検索API",
         "parameters": [
@@ -36,7 +36,7 @@
             "description": "都道府県名（例: 東京都）"
           }
         ],
-        "tags": ["getGarbageItems"],
+        "tags": ["getGarbageItemsByCity"],
         "responses": {
           "200": {
             "description": "",
