@@ -4,19 +4,121 @@
   <meta charset="UTF-8">
   <title>ごみ当ちゃん API 利用申込 | ごみ当ちゃん 公開API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    body {
+      font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+      line-height: 1.7;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    :root { --bg: #f4f6f8; --text: #333; --primary: #2c3e50; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #121212; --text: #e0e0e0; }
+    }
+
+    header {
+      background-color: var(--primary);
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.5em;
+      margin: 0;
+    }
+    header a {
+      color: #fff;
+      text-decoration: none;
+      background: #1e90ff; /* トップへ戻るボタン色（about.htmlと統一） */
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+    header a:hover { opacity: 0.9; }
+
+    main {
+      padding: 30px 40px 100px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 40px;
+      transition: color 0.3s;
+    }
+    @media (prefers-color-scheme: dark) {
+      h2 { color: #e0e0e0; }
+    }
+
+    a.btn {
+      display: inline-block;
+      margin: 16px 0;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #1e90ff;
+      font-weight: bold;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    a.btn:hover { transform: scale(1.05); opacity: 0.9; }
+
+    pre {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      border: 1px solid #ccc;
+      font-size: 0.95em;
+    }
+    @media (prefers-color-scheme: dark) {
+      pre { background-color: #1e1e1e; border-color: #333; color: #e0e0e0; }
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      background: #2c3e50;
+      padding: 6px 14px;
+      border-radius: 6px;
+      margin-left: 10px;
+    }
+    footer a:hover { opacity: 0.9; }
+  </style>
 </head>
 <body>
-  <a href="index.html" class="back-btn">🏠 ホームに戻る</a>
+  <header>
+    <h1>ごみ当ちゃん API 利用申込</h1>
+    <a href="index.html">🏠 トップへ戻る</a>
+  </header>
 
-  <h1>ごみ当ちゃん API 利用申込</h1>
+  <main>
+    <h2>1. 利用申込フォーム</h2>
+    <p>API を利用する場合、下記フォームに必要事項を入力してください（<strong>準備中</strong>）：</p>
+    <a href="#" target="_blank" class="btn">📝 利用申込フォームを開く</a>
 
-  <h2>1. 利用申込フォーム</h2>
-  <p>API を利用する場合、下記フォームに必要事項を入力してください(** 準備中 **)：</p>
-  <a href="#" target="_blank" class="btn">📝 利用申込フォームを開く</a>
-
-  <h2>2. API 利用規約</h2>
-  <pre>
+    <h2>2. API 利用規約</h2>
+    <pre>
 # ごみ当ちゃん API 利用規約
 
 1. 利用条件
@@ -42,8 +144,12 @@
 - 本規約に記載のない事項は、[ごみ当ちゃん 利用規約](https://gomitochan.jp/terms-of-use/) に従います。
 
 © 2025 ごみ当ちゃん / tohrusan
-  </pre>
+    </pre>
+  </main>
 
-  <a href="index.html" class="back-btn">🏠 ホームに戻る</a>
+  <footer>
+    <span>© 2025 ごみ当ちゃん / tohrusan</span>
+    <a href="index.html">🏠 トップへ戻る</a>
+  </footer>
 </body>
 </html>
