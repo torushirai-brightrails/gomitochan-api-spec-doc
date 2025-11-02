@@ -36,7 +36,7 @@
             "description": "都道府県名（例: 東京都）"
           }
         ],
-        "tags": ["v1"],
+        "tags": ["getGarbageItems"],
         "responses": {
           "200": {
             "description": "",
@@ -127,6 +127,25 @@
                   "認証エラー例（403）": {
                     "value": { "detail": "認証情報がないか、または無効な認証情報です" },
                     "summary": "APIキーがない、または無効な場合"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "リクエスト数の制限を超過した場合",
+                  "properties": { "detail": { "type": "string", "description": "エラー内容" } },
+                  "example": { "detail": "リクエスト数が制限を超過しました" }
+                },
+                "examples": {
+                  "認証エラー例（403）": {
+                    "value": { "detail": "リクエスト数が制限を超過しました" },
+                    "summary": "リクエスト数の制限を超過した場合"
                   }
                 }
               }
