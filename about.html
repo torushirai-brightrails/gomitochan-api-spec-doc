@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ごみ当ちゃんAPIについて</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    body {
+      font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+      line-height: 1.7;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 40px 20px 100px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    :root { --bg: #f4f6f8; --text: #333; --primary: #2c3e50; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #121212; --text: #e0e0e0; }
+    }
+    h1 { color: var(--primary); text-align: center; margin-bottom: 20px; }
+    h2 { color: var(--primary); margin-top: 40px; }
+    a.btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #2c3e50;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a.btn:hover { opacity: 0.9; }
+    footer {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8em;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h1>ごみ当ちゃんAPIについて</h1>
+
+  <p>「ごみ当ちゃん」で使用している <strong>ごみ分別機能</strong> を、外部システムでも利用できるようにするためのAPIを提供しています。</p>
+
+  <h2>利用条件</h2>
+  <ul>
+    <li>ごみ分別検索APIは <strong>無料で利用可能</strong> ですが、<strong>月間1,000リクエスト</strong> の制限があります。</li>
+    <li>利用可能な自治体は、以下のリンクに掲載されている自治体が提供するオープンデータを利用しています。<br>
+      ▶ <a href="https://gomitochan.jp/available-list-of-garbageitems/" target="_blank">利用可能なごみ分別自治体リスト</a>
+    </li>
+  </ul>
+
+  <h2>利用申し込み</h2>
+  <p>APIを利用するには、<strong>事前の利用申し込み</strong> が必要です。<br>
+  下の「利用申し込み」ボタンをクリックして申込フォーム（<code>api_apply.html</code>）へ進んでください。</p>
+
+  <a href="api_apply.html" class="btn">📝 利用申し込み</a>
+
+  <h2>利用方法</h2>
+  <ul>
+    <li>申し込み後に発行される <strong>認証キー（APIキー）</strong> を、HTTPヘッダー <code>X-Api-Key</code> に指定してAPIを呼び出します。</li>
+    <li>提供しているAPIの詳細仕様は、以下のドキュメントで参照できます：<br>
+      ・<a href="swagger.html">Swagger UI形式</a><br>
+      ・<a href="redoc.html">Redoc形式</a>
+    </li>
+  </ul>
+
+  <footer>© 2025 ごみ当ちゃん / tohrusan</footer>
+</body>
+</html>
