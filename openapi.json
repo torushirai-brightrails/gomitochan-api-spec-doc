@@ -39,7 +39,7 @@
         "tags": ["getGarbageItemsByCity"],
         "responses": {
           "200": {
-            "description": "",
+            "description": "正常なレスポンス",
             "content": {
               "application/json": {
                 "schema": {
@@ -95,7 +95,7 @@
             }
           },
           "400": {
-            "description": "",
+            "description": "リクエストパラメータが不正",
             "content": {
               "application/json": {
                 "schema": {
@@ -114,7 +114,7 @@
             }
           },
           "403": {
-            "description": "",
+            "description": "アクセス拒否: 認証情報がないか、または無効な認証情報",
             "content": {
               "application/json": {
                 "schema": {
@@ -133,7 +133,7 @@
             }
           },
           "429": {
-            "description": "",
+            "description": "リクエスト数の制限超過",
             "content": {
               "application/json": {
                 "schema": {
@@ -162,7 +162,7 @@
         "tags": ["getUtcpManual"],
         "responses": {
           "200": {
-            "description": "",
+            "description": "正常なレスポンス",
             "content": {
               "application/json": {
                 "schema": {
@@ -200,7 +200,7 @@
             }
           },
           "429": {
-            "description": "",
+            "description": "リクエスト数の制限超過",
             "content": {
               "application/json": {
                 "schema": {
