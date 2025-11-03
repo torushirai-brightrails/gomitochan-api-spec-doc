@@ -159,7 +159,7 @@
         "operationId": "getUtcpManual",
         "description": "ごみ当ちゃんが提供する自治体別ごみ分別検索ツールのUTCPマニュアルを提供する。",
         "summary": "ごみ当ちゃん UTCP マニュアル取得",
-        "tags": ["v1"],
+        "tags": ["getUtcpManual"],
         "responses": {
           "200": {
             "description": "",
@@ -194,6 +194,25 @@
                       "tools": [{}]
                     },
                     "summary": "UTCPマニュアル取得時"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "リクエスト数の制限を超過した場合",
+                  "properties": { "detail": { "type": "string", "description": "エラー内容" } },
+                  "example": { "detail": "リクエスト数が制限を超過しました" }
+                },
+                "examples": {
+                  "認証エラー例（403）": {
+                    "value": { "detail": "リクエスト数が制限を超過しました" },
+                    "summary": "リクエスト数の制限を超過した場合"
                   }
                 }
               }
