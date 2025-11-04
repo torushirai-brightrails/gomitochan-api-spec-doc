@@ -170,14 +170,6 @@
                   "properties": {
                     "manual_version": { "type": "string", "description": "マニュアルのバージョン", "example": "1.0.0" },
                     "utcp_version": { "type": "string", "description": "UTCP のバージョン", "example": "1.0.2" },
-                    "info": {
-                      "type": "object",
-                      "description": "API情報",
-                      "properties": {
-                        "title": { "type": "string", "description": "APIタイトル", "example": "ごみ当ちゃん 自治体別ごみ分別検索API" },
-                        "version": { "type": "string", "description": "APIバージョン", "example": "1.0.0" }
-                      }
-                    },
                     "tools": {
                       "type": "array",
                       "description": "利用可能なツール一覧",
@@ -190,7 +182,6 @@
                     "value": {
                       "manual_version": "1.0.0",
                       "utcp_version": "1.0.2",
-                      "info": { "title": "ごみ当ちゃん 自治体別ごみ分別検索API", "version": "1.0.0" },
                       "tools": [{}]
                     },
                     "summary": "UTCPマニュアル取得時"
