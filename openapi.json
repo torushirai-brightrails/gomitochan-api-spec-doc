@@ -311,7 +311,7 @@
         }
       }
     },
-    "agentapi/v1/mcp": {
+    "/agentapi/v1/mcp": {
       "post": {
         "operationId": "connectMcpServer",
         "description": "ごみ当ちゃんが提供する自治体別ごみ分別検索ツールのMCPサーバエンドポイント",

@@ -139,7 +139,7 @@ paths:
                   value:
                     detail: リクエスト数が制限を超過しました
                   summary: リクエスト数の制限を超過した場合
-  /v1/mcp:
+  /agentapi/v1/mcp:
     post:
       operationId: connectMcpServer
       description: ごみ当ちゃんが提供する自治体別ごみ分別検索ツールのMCPサーバエンドポイント
@@ -313,7 +313,7 @@ paths:
                   summary: 認証に失敗した場合
                   value:
                     jsonrpc: '2.0'
-                    id: 1
+                    id: null
                     error:
                       code: -32000
                       message: 認証情報がないか、または無効な認証情報です
@@ -343,7 +343,7 @@ paths:
                   summary: リスエスト数が制限を超過した場合
                   value:
                     jsonrpc: '2.0'
-                    id: 1
+                    id: null
                     error:
                       code: -32000
                       message: リクエスト数が制限を超過しました
