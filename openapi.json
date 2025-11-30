@@ -207,6 +207,110 @@
         }
       }
     },
+    "/v1/utcp": {
+      "get": {
+        "operationId": "getUtcpManual",
+        "description": "ごみ当ちゃんが提供する自治体別ごみ分別検索ツールのUTCPマニュアルを提供する。(UTCP)",
+        "summary": "ごみ当ちゃん UTCP マニュアル取得",
+        "tags": ["getUtcpManual"],
+        "responses": {
+          "200": {
+            "description": "正常なレスポンス",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "manual_version": {
+                      "type": "string",
+                      "description": "マニュアルのバージョン",
+                      "example": "1.0.0"
+                    },
+                    "utcp_version": {
+                      "type": "string",
+                      "description": "UTCP のバージョン",
+                      "example": "1.0.2"
+                    },
+                    "tools": {
+                      "type": "array",
+                      "description": "利用可能なツール一覧",
+                      "items": {
+                        "type": "object",
+                        "description": "ツール情報 tools配下のモデル情報については「https://www.utcp.io/implementation」を参照してください。",
+                        "properties": {}
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "UTCPマニュアル取得時(通常ケース)": {
+                    "value": {
+                      "manual_version": "1.0.0",
+                      "utcp_version": "1.0.2",
+                      "tools": [{}]
+                    },
+                    "summary": "UTCPマニュアル取得時"
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "リクエスト数の制限超過",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "リクエスト数の制限を超過した場合",
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "description": "エラー内容"
+                    }
+                  },
+                  "example": {
+                    "detail": "リクエスト数が制限を超過しました"
+                  }
+                },
+                "examples": {
+                  "認証エラー例（403）": {
+                    "value": {
+                      "detail": "リクエスト数が制限を超過しました"
+                    },
+                    "summary": "リクエスト数の制限を超過した場合"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "内部サーバーエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "description": "エラー内容",
+                      "example": "内部サーバエラーが発生しました"
+                    }
+                  }
+                },
+                "examples": {
+                  "内部サーバーエラー（500）": {
+                    "value": {
+                      "detail": "内部サーバエラーが発生しました"
+                    },
+                    "summary": "UTCPマニュアル取得時のエラー等"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "agentapi/v1/mcp": {
       "post": {
         "operationId": "connectMcpServer",
@@ -496,110 +600,6 @@
                         "message": "リクエスト数が制限を超過しました"
                       }
                     }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/v1/utcp": {
-      "get": {
-        "operationId": "getUtcpManual",
-        "description": "ごみ当ちゃんが提供する自治体別ごみ分別検索ツールのUTCPマニュアルを提供する。(UTCP)",
-        "summary": "ごみ当ちゃん UTCP マニュアル取得",
-        "tags": ["getUtcpManual"],
-        "responses": {
-          "200": {
-            "description": "正常なレスポンス",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "manual_version": {
-                      "type": "string",
-                      "description": "マニュアルのバージョン",
-                      "example": "1.0.0"
-                    },
-                    "utcp_version": {
-                      "type": "string",
-                      "description": "UTCP のバージョン",
-                      "example": "1.0.2"
-                    },
-                    "tools": {
-                      "type": "array",
-                      "description": "利用可能なツール一覧",
-                      "items": {
-                        "type": "object",
-                        "description": "ツール情報 tools配下のモデル情報については「https://www.utcp.io/implementation」を参照してください。",
-                        "properties": {}
-                      }
-                    }
-                  }
-                },
-                "examples": {
-                  "UTCPマニュアル取得時(通常ケース)": {
-                    "value": {
-                      "manual_version": "1.0.0",
-                      "utcp_version": "1.0.2",
-                      "tools": [{}]
-                    },
-                    "summary": "UTCPマニュアル取得時"
-                  }
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "リクエスト数の制限超過",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "description": "リクエスト数の制限を超過した場合",
-                  "properties": {
-                    "detail": {
-                      "type": "string",
-                      "description": "エラー内容"
-                    }
-                  },
-                  "example": {
-                    "detail": "リクエスト数が制限を超過しました"
-                  }
-                },
-                "examples": {
-                  "認証エラー例（403）": {
-                    "value": {
-                      "detail": "リクエスト数が制限を超過しました"
-                    },
-                    "summary": "リクエスト数の制限を超過した場合"
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "内部サーバーエラー",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "string",
-                      "description": "エラー内容",
-                      "example": "内部サーバエラーが発生しました"
-                    }
-                  }
-                },
-                "examples": {
-                  "内部サーバーエラー（500）": {
-                    "value": {
-                      "detail": "内部サーバエラーが発生しました"
-                    },
-                    "summary": "UTCPマニュアル取得時のエラー等"
                   }
                 }
               }
