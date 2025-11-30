@@ -549,7 +549,7 @@
                     "summary": "認証に失敗した場合",
                     "value": {
                       "jsonrpc": "2.0",
-                      "id": 1,
+                      "id": null,
                       "error": {
                         "code": -32000,
                         "message": "認証情報がないか、または無効な認証情報です"
@@ -594,7 +594,7 @@
                     "summary": "リスエスト数が制限を超過した場合",
                     "value": {
                       "jsonrpc": "2.0",
-                      "id": 1,
+                      "id": null,
                       "error": {
                         "code": -32000,
                         "message": "リクエスト数が制限を超過しました"
