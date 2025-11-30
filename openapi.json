@@ -4,35 +4,38 @@
     "title": "ごみ当ちゃん 公開API (Beta)",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://api-gateway.gomitochan.net",
-      "description": "ごみ当ちゃん 公開API エンドポイント"
-    }
-  ],
+  "servers": [{
+    "url": "https://api-gateway.gomitochan.net",
+    "description": "ごみ当ちゃん 公開API エンドポイント"
+  }],
   "paths": {
     "/v1/garbage/garbageitems": {
       "get": {
         "operationId": "getGarbageItemsByCity",
         "description": "ごみ当ちゃん 自治体別ごみ分別検索を提供する。",
         "summary": "ごみ当ちゃん 自治体別ごみ分別検索API",
-        "parameters": [
-          {
+        "parameters": [{
             "in": "query",
             "name": "city",
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "description": "市区町村名（例: 中央区）"
           },
           {
             "in": "query",
             "name": "item",
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "description": "ごみ品目（例: アイロン）"
           },
           {
             "in": "query",
             "name": "pref",
-            "schema": { "type": "string" },
+            "schema": {
+              "type": "string"
+            },
             "description": "都道府県名（例: 東京都）"
           }
         ],
@@ -45,19 +48,40 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "count": { "type": "integer", "description": "検索結果件数" },
+                    "count": {
+                      "type": "integer",
+                      "description": "検索結果件数"
+                    },
                     "items": {
                       "type": "array",
                       "description": "検索結果のアイテム一覧",
                       "items": {
                         "type": "object",
                         "properties": {
-                          "item": { "type": "string", "description": "品目名" },
-                          "collection_item": { "type": "string", "description": "分別区分" },
-                          "howto_disposal": { "type": "string", "description": "排出方法" },
-                          "fee": { "type": "integer", "description": "手数料（-1は該当なし）" },
-                          "notice": { "type": "string", "description": "備考・注意事項" },
-                          "score": { "type": "number", "description": "検索一致スコア" }
+                          "item": {
+                            "type": "string",
+                            "description": "品目名"
+                          },
+                          "collection_item": {
+                            "type": "string",
+                            "description": "分別区分"
+                          },
+                          "howto_disposal": {
+                            "type": "string",
+                            "description": "排出方法"
+                          },
+                          "fee": {
+                            "type": "integer",
+                            "description": "手数料（-1は該当なし）"
+                          },
+                          "notice": {
+                            "type": "string",
+                            "description": "備考・注意事項"
+                          },
+                          "score": {
+                            "type": "number",
+                            "description": "検索一致スコア"
+                          }
                         }
                       }
                     }
@@ -67,8 +91,7 @@
                   "件数がある場合(通常ケース)": {
                     "value": {
                       "count": 2,
-                      "items": [
-                        {
+                      "items": [{
                           "item": "アイロン",
                           "collection_item": "燃やさないごみ",
                           "howto_disposal": "",
@@ -88,7 +111,10 @@
                     }
                   },
                   "件数がない場合": {
-                    "value": { "count": 0, "items": [] }
+                    "value": {
+                      "count": 0,
+                      "items": []
+                    }
                   }
                 }
               }
@@ -101,12 +127,21 @@
                 "schema": {
                   "type": "object",
                   "description": "リクエストパラメータが不正な場合",
-                  "properties": { "detail": { "type": "string", "description": "エラー内容" } },
-                  "example": { "detail": "pref(都道府県名) と city(市区町村名) は必須です" }
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "description": "エラー内容"
+                    }
+                  },
+                  "example": {
+                    "detail": "pref(都道府県名) と city(市区町村名) は必須です"
+                  }
                 },
                 "examples": {
                   "入力エラー例（400）": {
-                    "value": { "detail": "pref(都道府県名) と city(市区町村名) は必須です" },
+                    "value": {
+                      "detail": "pref(都道府県名) と city(市区町村名) は必須です"
+                    },
                     "summary": "必須パラメータが欠落している場合"
                   }
                 }
@@ -120,12 +155,21 @@
                 "schema": {
                   "type": "object",
                   "description": "認証に失敗した場合",
-                  "properties": { "detail": { "type": "string", "description": "エラー内容" } },
-                  "example": { "detail": "認証情報がないか、または無効な認証情報です" }
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "description": "エラー内容"
+                    }
+                  },
+                  "example": {
+                    "detail": "認証情報がないか、または無効な認証情報です"
+                  }
                 },
                 "examples": {
                   "認証エラー例（403）": {
-                    "value": { "detail": "認証情報がないか、または無効な認証情報です" },
+                    "value": {
+                      "detail": "認証情報がないか、または無効な認証情報です"
+                    },
                     "summary": "APIキーがない、または無効な場合"
                   }
                 }
@@ -139,13 +183,319 @@
                 "schema": {
                   "type": "object",
                   "description": "リクエスト数の制限を超過した場合",
-                  "properties": { "detail": { "type": "string", "description": "エラー内容" } },
-                  "example": { "detail": "リクエスト数が制限を超過しました" }
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "description": "エラー内容"
+                    }
+                  },
+                  "example": {
+                    "detail": "リクエスト数が制限を超過しました"
+                  }
                 },
                 "examples": {
                   "認証エラー例（403）": {
-                    "value": { "detail": "リクエスト数が制限を超過しました" },
+                    "value": {
+                      "detail": "リクエスト数が制限を超過しました"
+                    },
                     "summary": "リクエスト数の制限を超過した場合"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "agentapi/v1/mcp": {
+      "post": {
+        "operationId": "connectMcpServer",
+        "description": "ごみ当ちゃんが提供する自治体別ごみ分別検索ツールのMCPサーバエンドポイント",
+        "summary": "ごみ当ちゃん MCP サーバエンドポイント",
+        "tags": ["connectMcpServer"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "jsonrpc": {
+                    "type": "string",
+                    "example": "2.0"
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "method": {
+                    "type": "string"
+                  },
+                  "params": {
+                    "type": "object"
+                  }
+                },
+                "required": ["jsonrpc", "method"]
+              },
+              "examples": {
+                "initialize": {
+                  "summary": "method = initialize",
+                  "value": {
+                    "method": "initialize",
+                    "params": {
+                      "protocolVersion": "2025-06-18",
+                      "capabilities": {},
+                      "clientInfo": {
+                        "name": "openai-mcp (Responses API)",
+                        "version": "1.0.0"
+                      }
+                    },
+                    "jsonrpc": "2.0",
+                    "id": 0
+                  }
+                },
+                "notificationsInitialized": {
+                  "summary": "method = notifications/initialized",
+                  "value": {
+                    "method": "notifications/initialized",
+                    "jsonrpc": "2.0"
+                  }
+                },
+                "toolsList": {
+                  "summary": "method = tools/list",
+                  "value": {
+                    "jsonrpc": "2.0",
+                    "id": 1,
+                    "method": "tools/list"
+                  }
+                },
+                "toolsCall": {
+                  "summary": "method = tools/call",
+                  "value": {
+                    "jsonrpc": "2.0",
+                    "id": 2,
+                    "method": "tools/call",
+                    "params": {
+                      "name": "getGarbageItemsByCity",
+                      "arguments": {
+                        "pref": "東京都",
+                        "city": "文京区",
+                        "item": "電気毛布"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "正常レスポンス",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "initialize": {
+                    "summary": "method = initialize",
+                    "value": {
+                      "jsonrpc": "2.0",
+                      "id": 0,
+                      "result": {
+                        "protocolVersion": "2024-11-05",
+                        "serverInfo": {
+                          "name": "gomitochan-mcp-server",
+                          "version": "1.0.0"
+                        },
+                        "capabilities": {
+                          "tools": {
+                            "list": true,
+                            "call": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "notificationsInitialized": {
+                    "summary": "method = notifications/initialized",
+                    "value": {}
+                  },
+                  "toolsList": {
+                    "summary": "method = tools/list",
+                    "value": {
+                      "jsonrpc": "2.0",
+                      "id": 1,
+                      "result": {
+                        "tools": [{
+                          "name": "getGarbageItemsByCity",
+                          "description": "ごみ当ちゃん自治体別ごみ分別検索",
+                          "inputSchema": {
+                            "type": "object",
+                            "properties": {
+                              "pref": {
+                                "type": "string"
+                              },
+                              "city": {
+                                "type": "string"
+                              },
+                              "item": {
+                                "type": "string"
+                              }
+                            },
+                            "required": ["pref", "city", "item"]
+                          }
+                        }]
+                      }
+                    }
+                  },
+                  "toolsCall": {
+                    "summary": "method = tools/call",
+                    "value": {
+                      "jsonrpc": "2.0",
+                      "id": 2,
+                      "result": {
+                        "content": [{
+                          "type": "text",
+                          "text": "{\"count\": 1, \"items\": [{\"item\": \"電気毛布\", \"collection_item\": \"粗大ごみ\", \"howto_disposal\": \"\", \"fee\": 300, \"notice\": \"\", \"score\": 1.0}]}"
+                        }]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "リクエストパラメータが不足",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jsonrpc": {
+                      "type": "string",
+                      "example": "2.0"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "リクエストID"
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 400
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "リクエストパラメータ不足": {
+                    "summary": "リクエストパラメータ不足",
+                    "value": {
+                      "jsonrpc": "2.0",
+                      "id": 1,
+                      "error": {
+                        "code": 400,
+                        "message": "リクエストパラメータが不足しています"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "アクセス拒否: 認証情報がないか、または無効な認証情報",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jsonrpc": {
+                      "type": "string",
+                      "example": "2.0"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "リクエストID"
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 400
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "認証に失敗した場合": {
+                    "summary": "認証に失敗した場合",
+                    "value": {
+                      "jsonrpc": "2.0",
+                      "id": 1,
+                      "error": {
+                        "code": -32000,
+                        "message": "認証情報がないか、または無効な認証情報です"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "リクエスト数制限",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jsonrpc": {
+                      "type": "string",
+                      "example": "2.0"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "リクエストID"
+                    },
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "example": 400
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "リスエスト数が制限を超過した場合": {
+                    "summary": "リスエスト数が制限を超過した場合",
+                    "value": {
+                      "jsonrpc": "2.0",
+                      "id": 1,
+                      "error": {
+                        "code": -32000,
+                        "message": "リクエスト数が制限を超過しました"
+                      }
+                    }
                   }
                 }
               }
@@ -157,7 +507,7 @@
     "/v1/utcp": {
       "get": {
         "operationId": "getUtcpManual",
-        "description": "ごみ当ちゃんが提供する自治体別ごみ分別検索ツールのUTCPマニュアルを提供する。",
+        "description": "ごみ当ちゃんが提供する自治体別ごみ分別検索ツールのUTCPマニュアルを提供する。(UTCP)",
         "summary": "ごみ当ちゃん UTCP マニュアル取得",
         "tags": ["getUtcpManual"],
         "responses": {
@@ -168,12 +518,24 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "manual_version": { "type": "string", "description": "マニュアルのバージョン", "example": "1.0.0" },
-                    "utcp_version": { "type": "string", "description": "UTCP のバージョン", "example": "1.0.2" },
+                    "manual_version": {
+                      "type": "string",
+                      "description": "マニュアルのバージョン",
+                      "example": "1.0.0"
+                    },
+                    "utcp_version": {
+                      "type": "string",
+                      "description": "UTCP のバージョン",
+                      "example": "1.0.2"
+                    },
                     "tools": {
                       "type": "array",
                       "description": "利用可能なツール一覧",
-                      "items": { "type": "object", "description": "ツール情報 tools配下のモデル情報については「https://www.utcp.io/implementation」を参照してください。", "properties": {} }
+                      "items": {
+                        "type": "object",
+                        "description": "ツール情報 tools配下のモデル情報については「https://www.utcp.io/implementation」を参照してください。",
+                        "properties": {}
+                      }
                     }
                   }
                 },
@@ -197,12 +559,21 @@
                 "schema": {
                   "type": "object",
                   "description": "リクエスト数の制限を超過した場合",
-                  "properties": { "detail": { "type": "string", "description": "エラー内容" } },
-                  "example": { "detail": "リクエスト数が制限を超過しました" }
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "description": "エラー内容"
+                    }
+                  },
+                  "example": {
+                    "detail": "リクエスト数が制限を超過しました"
+                  }
                 },
                 "examples": {
                   "認証エラー例（403）": {
-                    "value": { "detail": "リクエスト数が制限を超過しました" },
+                    "value": {
+                      "detail": "リクエスト数が制限を超過しました"
+                    },
                     "summary": "リクエスト数の制限を超過した場合"
                   }
                 }
@@ -215,11 +586,19 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": { "detail": { "type": "string", "description": "エラー内容", "example": "内部サーバエラーが発生しました" } }
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "description": "エラー内容",
+                      "example": "内部サーバエラーが発生しました"
+                    }
+                  }
                 },
                 "examples": {
                   "内部サーバーエラー（500）": {
-                    "value": { "detail": "内部サーバエラーが発生しました" },
+                    "value": {
+                      "detail": "内部サーバエラーが発生しました"
+                    },
                     "summary": "UTCPマニュアル取得時のエラー等"
                   }
                 }
