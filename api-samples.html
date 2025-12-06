@@ -94,7 +94,7 @@
       margin: 0;
       padding: 16px;
       overflow-x: auto;
-      font-size: 14px;
+      font-size: 12px;
     }
 
     /* 行番号のスタイル調整 */
@@ -108,6 +108,41 @@
     
     body.dark .line-numbers-rows {
       border-right-color: #555;
+    }
+
+    /* 実行方法セクション */
+    .execution-section {
+      margin-top: 40px;
+    }
+
+    .execution-section h2 {
+      color: #003366;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+
+    body.dark .execution-section h2 {
+      color: #4da6ff;
+    }
+
+    .execution-section pre {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+    }
+
+    body.dark .execution-section pre {
+      background: #1e1e1e;
+    }
+
+    .execution-section ul {
+      line-height: 1.8;
+      padding-left: 24px;
+    }
+
+    .execution-section li {
+      margin-bottom: 8px;
     }
 
     /* ダーク / ライト切替ボタン */
@@ -157,6 +192,20 @@
     <div class="code-wrapper">
       <button class="copy-button" onclick="copyCode()">📋 コピー</button>
       <pre class="line-numbers"><code id="code-block" class="language-python">読み込み中...</code></pre>
+    </div>
+
+    <!-- ▼ 実行方法セクション -->
+    <div class="execution-section">
+      <h2>📡 実行方法</h2>
+      <pre><code>$ export OPENAI_API_KEY="あなたのAPIキー"
+$ python3 sample_utcp_agent.py</code></pre>
+      
+      <h2>🔧 注意事項</h2>
+      <ul>
+        <li>API キーは流出しないよう環境変数で管理してください。</li>
+        <li>getGarbageItemsByCity は UTCP 用の HTTPテンプレートを利用します。</li>
+        <li>ごみ当ちゃん API はベータ版で仕様変更の可能性があります。</li>
+      </ul>
     </div>
 
   </div>
