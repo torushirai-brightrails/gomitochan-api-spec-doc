@@ -64,6 +64,11 @@
       background: #638122;
       color: white;
     }
+    body.dark .tab.active {
+      font-weight: bold;
+      background: #638122;
+      color: white;
+    }
 
     /* コードブロックのラッパー */
     .code-wrapper {
@@ -246,7 +251,7 @@
         <h4>インストール</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
-            onclick="copyExecutionCode('execution-code-openai-inst')">📋
+            onclick="copyExecutionCode(this, 'execution-code-openai-inst')">📋
             コピー</button>
           <pre><code id="execution-code-openai-inst">$ export OPENAI_API_KEY="OpenAIで入手したAPIキー"
 $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"
@@ -256,7 +261,7 @@ $ pip install utcp-agent langchain-openai</code></pre>
         <h4>実行方法(UTCP)</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
-            onclick="copyExecutionCode('execution-code-openai-run-utcp')">📋
+            onclick="copyExecutionCode(this, 'execution-code-openai-run-utcp')">📋
             コピー</button>
           <pre><code id="execution-code-openai-run-utcp">$ python sample_utcp_agent_openai.py</code></pre>
         </div>
@@ -264,7 +269,7 @@ $ pip install utcp-agent langchain-openai</code></pre>
         <h4>実行方法(MCP)</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
-            onclick="copyExecutionCode('execution-code-openai-run-mcp')">📋
+            onclick="copyExecutionCode(this, 'execution-code-openai-run-mcp')">📋
             コピー</button>
           <pre><code id="execution-code-openai-run-mcp">$ python sample_mcp_agent_openai.py</code></pre>
         </div>
@@ -273,7 +278,7 @@ $ pip install utcp-agent langchain-openai</code></pre>
         <h4>インストール</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
-            onclick="copyExecutionCode('execution-code-anthropic-inst')">📋
+            onclick="copyExecutionCode(this, 'execution-code-anthropic-inst')">📋
             コピー</button>
           <pre><code id="execution-code-anthropic-inst">$ export ANTHROPIC_API_KEY="Anthropicで入手したAPIキー"
 $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"
@@ -283,7 +288,7 @@ $ pip install utcp-agent langchain-anthropic</code></pre>
         <h4>実行方法(UTCP)</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
-            onclick="copyExecutionCode('execution-code-anthropic-run-utcp')">📋
+            onclick="copyExecutionCode(this, 'execution-code-anthropic-run-utcp')">📋
             コピー</button>
           <pre><code id="execution-code-anthropic-run-utcp">$ python sample_utcp_agent_anthropic.py</code></pre>
         </div>
@@ -291,7 +296,7 @@ $ pip install utcp-agent langchain-anthropic</code></pre>
         <h4>実行方法(MCP)</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
-            onclick="copyExecutionCode('execution-code-anthropic-run-mcp')">📋
+            onclick="copyExecutionCode(this, 'execution-code-anthropic-run-mcp')">📋
             コピー</button>
           <pre><code id="execution-code-anthropic-run-mcp">$ python sample_mcp_agent_anthropic.py</code></pre>
         </div>
@@ -369,17 +374,16 @@ $ pip install utcp-agent langchain-anthropic</code></pre>
       });
     }
 
-    function copyExecutionCode(id) {
-      const executionCode = document.getElementById(id);
-      const button = document.querySelector(".execution-copy-button");
+    function copyExecutionCode(buttonElement, codeId) {
+      const executionCode = document.getElementById(codeId);
       
       navigator.clipboard.writeText(executionCode.textContent).then(() => {
-        button.textContent = "✓ コピー完了";
-        button.classList.add("copied");
+        buttonElement.textContent = "✓ コピー完了";
+        buttonElement.classList.add("copied");
         
         setTimeout(() => {
-          button.textContent = "📋 コピー";
-          button.classList.remove("copied");
+          buttonElement.textContent = "📋 コピー";
+          buttonElement.classList.remove("copied");
         }, 2000);
       }).catch(err => {
         console.error("コピーに失敗しました:", err);
