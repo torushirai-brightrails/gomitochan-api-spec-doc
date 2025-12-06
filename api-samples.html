@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <title>MCP/UTCP ごみ当ちゃん API サンプルコード | ごみ当ちゃん API</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>MCP/UTCP ごみ当ちゃん API サンプルコード | ごみ当ちゃん API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Prism.js Light / Dark + Line Numbers Plugin -->
-  <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
+    <!-- Prism.js Light / Dark + Line Numbers Plugin -->
+    <link id="prism-theme"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css"
+      rel="stylesheet" />
 
-  <style>
+    <style>
     body {
       font-family: "Noto Sans JP", sans-serif;
       margin: 0;
@@ -195,108 +199,126 @@
       color: #333;
     }
   </style>
-</head>
+  </head>
 
-<body class="light">
+  <body class="light">
 
-  <header>
-    <h1 style="margin: 0;">ごみ当ちゃん API - コードサンプル</h1>
-  </header>
+    <header>
+      <h1 style="margin: 0;">ごみ当ちゃん API - コードサンプル</h1>
+    </header>
 
-  <!-- ダーク/ライトモード ボタン -->
-  <button class="theme-toggle" onclick="toggleTheme()">🌙 ダークモード</button>
+    <!-- ダーク/ライトモード ボタン -->
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 ダークモード</button>
 
-  <div class="container">
+    <div class="container">
 
-    <!-- ▼ 説明セクション -->
-    <div class="section"></div>
+      <!-- ▼ 説明セクション -->
       <h2>コードサンプル</h2>
       <p>
         各サンプルコードについては、以下のタブで切り替えして確認ができます。
         Pythonでのサンプルコードになります。
         動作する上での最低限のコードになりますので、より細かいチューニングをする場合は各コードの実装で使用しているライブラリ・仕様を参照してください。
       </p>
-    </div>
 
-    <!-- ▼ タブ -->
-    <div class="tabs">
-      <div class="tab active" data-file="sample_utcp_agent_openai.py.txt">UTCP Agent サンプル(OpenAI)</div>
-      <div class="tab" data-file="sample_utcp_agent_anthropic.py.txt">UTCP Agent サンプル(Anthropic)</div>
-      <div class="tab" data-file="sample_mcp_agent_openai.py.txt">MCP Agent サンプル(OpenAI)</div>
-      <div class="tab" data-file="sample_mcp_agent_anthropic.py.txt">MCP Agent サンプル(Anthropic)</div>
-    </div>
+      <!-- ▼ タブ -->
+      <div class="tabs">
+        <div class="tab active" data-file="sample_utcp_agent_openai.py.txt">UTCP
+          Agent サンプル(OpenAI)</div>
+        <div class="tab" data-file="sample_utcp_agent_anthropic.py.txt">UTCP
+          Agent サンプル(Anthropic)</div>
+        <div class="tab" data-file="sample_mcp_agent_openai.py.txt">MCP Agent
+          サンプル(OpenAI)</div>
+        <div class="tab" data-file="sample_mcp_agent_anthropic.py.txt">MCP Agent
+          サンプル(Anthropic)</div>
+      </div>
 
-    <!-- ▼ コード表示ブロック -->
-    <div class="code-wrapper">
-      <button class="copy-button" onclick="copyCode()">📋 コピー</button>
-      <pre class="line-numbers"><code id="code-block" class="language-python">読み込み中...</code></pre>
-    </div>
+      <!-- ▼ コード表示ブロック -->
+      <div class="code-wrapper">
+        <button class="copy-button" onclick="copyCode()">📋 コピー</button>
+        <pre
+          class="line-numbers"><code id="code-block" class="language-python">読み込み中...</code></pre>
+      </div>
 
-    <!-- ▼ 実行方法セクション -->
-    <div class="section">
-      <h2>📡 事前準備</h2>
-      <h3>OpenAIで動かす場合</h3>
-      <h4>インストール</h4>
-      <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-openai-inst')">📋 コピー</button>
-        <pre><code id="execution-code-openai-inst">$ export OPENAI_API_KEY="OpenAIで入手したAPIキー"
+      <!-- ▼ 実行方法セクション -->
+      <div class="section">
+        <h2>📡 事前準備</h2>
+        <h3>OpenAIで動かす場合</h3>
+        <h4>インストール</h4>
+        <div class="execution-code-wrapper">
+          <button class="execution-copy-button"
+            onclick="copyExecutionCode('execution-code-openai-inst')">📋
+            コピー</button>
+          <pre><code id="execution-code-openai-inst">$ export OPENAI_API_KEY="OpenAIで入手したAPIキー"
 $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"
 $ pip install utcp-agent langchain-openai</code></pre>
-      </div>
+        </div>
 
-      <h4>実行方法(UTCP)</h4>
-      <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-openai-run-utcp')">📋 コピー</button>
-        <pre><code id="execution-code-openai-run-utcp">$ python sample_utcp_agent_openai.py</code></pre>
-      </div>
+        <h4>実行方法(UTCP)</h4>
+        <div class="execution-code-wrapper">
+          <button class="execution-copy-button"
+            onclick="copyExecutionCode('execution-code-openai-run-utcp')">📋
+            コピー</button>
+          <pre><code id="execution-code-openai-run-utcp">$ python sample_utcp_agent_openai.py</code></pre>
+        </div>
 
-      <h4>実行方法(MCP)</h4>
-      <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-openai-run-mcp')">📋 コピー</button>
-        <pre><code id="execution-code-openai-run-mcp">$ python sample_mcp_agent_openai.py</code></pre>
-      </div>
+        <h4>実行方法(MCP)</h4>
+        <div class="execution-code-wrapper">
+          <button class="execution-copy-button"
+            onclick="copyExecutionCode('execution-code-openai-run-mcp')">📋
+            コピー</button>
+          <pre><code id="execution-code-openai-run-mcp">$ python sample_mcp_agent_openai.py</code></pre>
+        </div>
 
-      <h3>Anthropicで動かす場合</h3>
-      <h4>インストール</h4>
-      <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-anthropic-inst')">📋 コピー</button>
-        <pre><code id="execution-code-anthropic-inst">$ export ANTHROPIC_API_KEY="Anthropicで入手したAPIキー"
+        <h3>Anthropicで動かす場合</h3>
+        <h4>インストール</h4>
+        <div class="execution-code-wrapper">
+          <button class="execution-copy-button"
+            onclick="copyExecutionCode('execution-code-anthropic-inst')">📋
+            コピー</button>
+          <pre><code id="execution-code-anthropic-inst">$ export ANTHROPIC_API_KEY="Anthropicで入手したAPIキー"
 $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"
 $ pip install utcp-agent langchain-anthropic</code></pre>
+        </div>
+
+        <h4>実行方法(UTCP)</h4>
+        <div class="execution-code-wrapper">
+          <button class="execution-copy-button"
+            onclick="copyExecutionCode('execution-code-anthropic-run-utcp')">📋
+            コピー</button>
+          <pre><code id="execution-code-anthropic-run-utcp">$ python sample_utcp_agent_anthropic.py</code></pre>
+        </div>
+
+        <h4>実行方法(MCP)</h4>
+        <div class="execution-code-wrapper">
+          <button class="execution-copy-button"
+            onclick="copyExecutionCode('execution-code-anthropic-run-mcp')">📋
+            コピー</button>
+          <pre><code id="execution-code-anthropic-run-mcp">$ python sample_mcp_agent_anthropic.py</code></pre>
+        </div>
+
+        <h2>🔧 注意事項</h2>
+        <ul>
+          <li>API キーは流出しないよう環境変数で管理してください。</li>
+          <li>getGarbageItemsByCity は UTCP 用の HTTPテンプレートを利用します。</li>
+          <li>ごみ当ちゃん API はベータ版で仕様変更の可能性があります。</li>
+        </ul>
       </div>
 
-      <h4>実行方法(UTCP)</h4>
-      <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-anthropic-run-utcp')">📋 コピー</button>
-        <pre><code id="execution-code-anthropic-run-utcp">$ python sample_utcp_agent_anthropic.py</code></pre>
-      </div>
-
-      <h4>実行方法(MCP)</h4>
-      <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-anthropic-run-mcp')">📋 コピー</button>
-        <pre><code id="execution-code-anthropic-run-mcp">$ python sample_mcp_agent_anthropic.py</code></pre>
-      </div>
-      
-      <h2>🔧 注意事項</h2>
-      <ul>
-        <li>API キーは流出しないよう環境変数で管理してください。</li>
-        <li>getGarbageItemsByCity は UTCP 用の HTTPテンプレートを利用します。</li>
-        <li>ごみ当ちゃん API はベータ版で仕様変更の可能性があります。</li>
-      </ul>
     </div>
 
-  </div>
+    <footer>
+      <p>© 2025 ごみ当ちゃん API</p>
+    </footer>
 
-  <footer>
-    <p>© 2025 ごみ当ちゃん API</p>
-  </footer>
+    <!-- Prism.js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
-  <!-- Prism.js -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-
-  <script>
+    <script>
     /* ===========================
        ダーク / ライトモード切替
        =========================== */
@@ -397,5 +419,5 @@ $ pip install utcp-agent langchain-anthropic</code></pre>
     });
   </script>
 
-</body>
+  </body>
 </html>
