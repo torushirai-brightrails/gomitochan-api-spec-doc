@@ -4,87 +4,184 @@
   <meta charset="UTF-8" />
   <title>MCP/UTCP ごみ当ちゃん API サンプルコード | ごみ当ちゃん API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./assets/style.css" />
+
+  <!-- Prism.js Light / Dark -->
+  <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
 
   <style>
-    /* ----- コード表示用の最適化  ----- */
-    pre {
-      background: #1e1e1e;
-      color: #dcdcdc;
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light {
+      background: #ffffff;
+      color: #333;
+    }
+    body.dark {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    header, footer {
       padding: 16px;
-      overflow-x: auto;
-      border-radius: 6px;
-      border: 1px solid #333;
-      font-size: 14px;
-      line-height: 1.5;
+      text-align: center;
+      background: #003366;
+      color: white;
     }
-    code {
-      font-family: Consolas, "Courier New", monospace;
-    }
-    h1, h2, h3 {
-      margin-top: 32px;
-    }
+
     .container {
       max-width: 900px;
-      margin: auto;
+      margin: 20px auto;
       padding: 20px;
     }
-    .file-name {
+
+    /* ---- タブ UI ---- */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .tab {
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 6px;
+      background: #dddddd;
+    }
+    body.dark .tab {
+      background: #333;
+      color: white;
+    }
+    .tab.active {
       font-weight: bold;
-      margin-bottom: 8px;
+      background: #0080ff;
+      color: white;
+    }
+
+    pre {
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+
+    /* ダーク / ライト切替ボタン */
+    .theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #444;
+      color: white;
+      border: none;
+    }
+    body.light .theme-toggle {
+      background: #ddd;
+      color: #333;
     }
   </style>
 </head>
 
-<body>
+<body class="light">
+
+  <header>
+    <h1 style="margin: 0;">ごみ当ちゃん API - コードサンプル</h1>
+  </header>
+
+  <!-- ダーク/ライトモード ボタン -->
+  <button class="theme-toggle" onclick="toggleTheme()">🌙 ダークモード</button>
+
   <div class="container">
 
-    <h1>MCP/UTCP でごみ当ちゃん API を利用するコードサンプル</h1>
+    <h2>MCP/UTCP を使ったコードサンプル</h2>
     <p>
-      このページでは、UTCP Agent を用いて「ごみ当ちゃん API」を利用するための
-      Python コード例を紹介します。
+      ファイルをタブで切り替えながら Python のコードを確認できます。
+      コードは Prism.js によりシンタックスハイライトされます。
     </p>
 
-    <h2>📘 サンプル概要</h2>
-    <p>
-      サンプルは UTCP Agent を使って、ごみ当ちゃん API の
-      <code>getGarbageItemsByCity</code> を呼び出し、
-      対話的に結果を返す最小構成の Python スクリプトです。
-    </p>
+    <!-- ▼ タブ -->
+    <div class="tabs">
+      <div class="tab active" data-file="sample_utcp_agent_openai.py.txt">UTCP Agent サンプル①</div>
+      <div class="tab" data-file="sample_utcp_agent_openai.py.txt">UTCP Agent サンプル②</div>
+    </div>
 
-    <h2>💻 Python サンプルコード</h2>
-
-    <div class="file-name">sample_utcp_agent.py</div>
-
-    <!-- ▼ ここで外部テキストファイルを読み込んで表示する想定（静的サイトでは JSで実装可能） -->
-    <pre><code id="code-block">読み込み中...</code></pre>
-
-    <script>
-      // sample_utcp_agent.txt（または .py）の内容を読み込んで表示
-      fetch("./sample_utcp_agent_openai.txt")
-        .then(response => response.text())
-        .then(text => {
-          document.getElementById("code-block").textContent = text;
-        })
-        .catch(err => {
-          document.getElementById("code-block").textContent =
-            "コードの読み込みに失敗しました: " + err;
-        });
-    </script>
-
-    <h2>📡 実行方法</h2>
-    <pre><code>
-$ export OPENAI_API_KEY="あなたのAPIキー"
-$ python3 sample_utcp_agent.py
-    </code></pre>
-
-    <h2>🔧 注意事項</h2>
-    <ul>
-      <li>API キーは流出しないよう環境変数で管理してください。</li>
-      <li>getGarbageItemsByCity は UTCP 用の HTTPテンプレートを利用します。</li>
-      <li>ごみ当ちゃん API はベータ版で仕様変更の可能性があります。</li>
-    </ul>
+    <!-- ▼ コード表示ブロック -->
+    <pre><code id="code-block" class="language-python">読み込み中...</code></pre>
 
   </div>
+
+  <footer>
+    <p>© 2025 ごみ当ちゃん API</p>
+  </footer>
+
+  <!-- Prism.js -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <script>
+    /* ===========================
+       ダーク / ライトモード切替
+       =========================== */
+    const body = document.body;
+    const prismTheme = document.getElementById("prism-theme");
+
+    function applyTheme(saved) {
+      if (saved === "dark") {
+        body.className = "dark";
+        prismTheme.href = "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css";
+        document.querySelector(".theme-toggle").textContent = "☀️ ライトモード";
+      } else {
+        body.className = "light";
+        prismTheme.href = "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css";
+        document.querySelector(".theme-toggle").textContent = "🌙 ダークモード";
+      }
+    }
+
+    function toggleTheme() {
+      const current = body.classList.contains("dark") ? "dark" : "light";
+      const next = current === "dark" ? "light" : "dark";
+      localStorage.setItem("theme", next);
+      applyTheme(next);
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "light";
+    applyTheme(savedTheme);
+
+
+    /* ===========================
+       タブ切り替え & ファイル読込
+       =========================== */
+    const tabs = document.querySelectorAll(".tab");
+    const codeBlock = document.getElementById("code-block");
+
+    function loadFile(file) {
+      codeBlock.textContent = "読み込み中...";
+      fetch(file)
+        .then(res => res.text())
+        .then(text => {
+          codeBlock.textContent = text;
+          Prism.highlightElement(codeBlock);
+        })
+        .catch(err => {
+          codeBlock.textContent = "読み込みエラー: " + err;
+        });
+    }
+
+    // 初期ロード
+    loadFile("sample_utcp_agent_openai.py.txt");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        loadFile(tab.dataset.file);
+      });
+    });
+  </script>
+
 </body>
 </html>
