@@ -5,8 +5,9 @@
   <title>MCP/UTCP ごみ当ちゃん API サンプルコード | ごみ当ちゃん API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Prism.js Light / Dark -->
+  <!-- Prism.js Light / Dark + Line Numbers Plugin -->
   <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
 
   <style>
     body {
@@ -60,11 +61,53 @@
       color: white;
     }
 
-    pre {
+    /* コードブロックのラッパー */
+    .code-wrapper {
+      position: relative;
       border-radius: 8px;
+      overflow: hidden;
+    }
+
+    /* コピーボタン */
+    .copy-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 6px 12px;
+      background: #0080ff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .copy-button:hover {
+      background: #0066cc;
+    }
+    .copy-button.copied {
+      background: #28a745;
+    }
+
+    pre {
+      margin: 0;
       padding: 16px;
       overflow-x: auto;
       font-size: 14px;
+    }
+
+    /* 行番号のスタイル調整 */
+    pre.line-numbers {
+      padding-left: 3.8em;
+    }
+    
+    .line-numbers-rows {
+      border-right: 1px solid #ddd;
+    }
+    
+    body.dark .line-numbers-rows {
+      border-right-color: #555;
     }
 
     /* ダーク / ライト切替ボタン */
@@ -78,6 +121,7 @@
       background: #444;
       color: white;
       border: none;
+      z-index: 100;
     }
     body.light .theme-toggle {
       background: #ddd;
@@ -110,7 +154,10 @@
     </div>
 
     <!-- ▼ コード表示ブロック -->
-    <pre><code id="code-block" class="language-python">読み込み中...</code></pre>
+    <div class="code-wrapper">
+      <button class="copy-button" onclick="copyCode()">📋 コピー</button>
+      <pre class="line-numbers"><code id="code-block" class="language-python">読み込み中...</code></pre>
+    </div>
 
   </div>
 
@@ -121,6 +168,7 @@
   <!-- Prism.js -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
   <script>
     /* ===========================
@@ -150,6 +198,28 @@
 
     const savedTheme = localStorage.getItem("theme") || "light";
     applyTheme(savedTheme);
+
+
+    /* ===========================
+       コピー機能
+       =========================== */
+    function copyCode() {
+      const codeBlock = document.getElementById("code-block");
+      const button = document.querySelector(".copy-button");
+      
+      navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+        button.textContent = "✓ コピー完了";
+        button.classList.add("copied");
+        
+        setTimeout(() => {
+          button.textContent = "📋 コピー";
+          button.classList.remove("copied");
+        }, 2000);
+      }).catch(err => {
+        console.error("コピーに失敗しました:", err);
+        alert("コピーに失敗しました");
+      });
+    }
 
 
     /* ===========================
