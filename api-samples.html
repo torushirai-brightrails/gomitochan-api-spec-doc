@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>MCP/UTCP ごみ当ちゃん API サンプルコード | ごみ当ちゃん API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/style.css" />
+
+  <style>
+    /* ----- コード表示用の最適化  ----- */
+    pre {
+      background: #1e1e1e;
+      color: #dcdcdc;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 6px;
+      border: 1px solid #333;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    code {
+      font-family: Consolas, "Courier New", monospace;
+    }
+    h1, h2, h3 {
+      margin-top: 32px;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .file-name {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>MCP/UTCP でごみ当ちゃん API を利用するコードサンプル</h1>
+    <p>
+      このページでは、UTCP Agent を用いて「ごみ当ちゃん API」を利用するための
+      Python コード例を紹介します。
+    </p>
+
+    <h2>📘 サンプル概要</h2>
+    <p>
+      サンプルは UTCP Agent を使って、ごみ当ちゃん API の
+      <code>getGarbageItemsByCity</code> を呼び出し、
+      対話的に結果を返す最小構成の Python スクリプトです。
+    </p>
+
+    <h2>💻 Python サンプルコード</h2>
+
+    <div class="file-name">sample_utcp_agent.py</div>
+
+    <!-- ▼ ここで外部テキストファイルを読み込んで表示する想定（静的サイトでは JSで実装可能） -->
+    <pre><code id="code-block">読み込み中...</code></pre>
+
+    <script>
+      // sample_utcp_agent.txt（または .py）の内容を読み込んで表示
+      fetch("./sample_utcp_agent_openai.txt")
+        .then(response => response.text())
+        .then(text => {
+          document.getElementById("code-block").textContent = text;
+        })
+        .catch(err => {
+          document.getElementById("code-block").textContent =
+            "コードの読み込みに失敗しました: " + err;
+        });
+    </script>
+
+    <h2>📡 実行方法</h2>
+    <pre><code>
+$ export OPENAI_API_KEY="あなたのAPIキー"
+$ python3 sample_utcp_agent.py
+    </code></pre>
+
+    <h2>🔧 注意事項</h2>
+    <ul>
+      <li>API キーは流出しないよう環境変数で管理してください。</li>
+      <li>getGarbageItemsByCity は UTCP 用の HTTPテンプレートを利用します。</li>
+      <li>ごみ当ちゃん API はベータ版で仕様変更の可能性があります。</li>
+    </ul>
+
+  </div>
+</body>
+</html>

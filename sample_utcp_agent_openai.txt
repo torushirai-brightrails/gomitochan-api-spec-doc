@@ -1,0 +1,57 @@
+import asyncio
+import logging
+import os
+from langchain_openai import ChatOpenAI
+from utcp_agent import UtcpAgent
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(name)s:%(lineno)d - %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+
+# Disable UTCP library logging
+logging.getLogger("utcp").setLevel(logging.WARNING)
+
+async def main():
+    # OpenAI APIキーを環境変数から取得
+    llm = ChatOpenAI(
+        model="gpt-5-nano",
+        api_key=os.getenv("OPENAI_API_KEY")
+    )
+    
+    # UTCPエージェントの作成
+    agent = await UtcpAgent.create(
+        llm=llm,
+        utcp_config={
+            "manual_call_templates": [{
+                "name": "getGarbageItemsByCity",
+                "call_template_type": "http",
+                "http_method": "GET",
+                "url": "https://api-gateway.gomitochan.net/v1/utcp",
+                "content_type": "application/json"
+            }],
+            "variables": {
+                "getGarbageItemsByCity_API_KEY": os.getenv("GOMITOCHAN_API_KEY")
+            }
+        }
+    )
+
+    print("🧠 UTCP Agent ready. Type 'exit' to quit.")
+    while True:
+        user_input = input("You: ").strip()
+        if user_input.lower() in ["exit", "quit", "q"]:
+            print("👋 終了します。")
+            break
+        try:
+            user_prompt = "あなたは、ごみに関すること、ごみに伴う環境への影響や貢献、ごみ出し、ごみ分別、ごみ当番に関する問い合わせのみ返答することができます。それ以外の問い合わせは対応できないので、お断りの返答をしてください。以降が問い合わせの内容になります。=> "
+            response = await agent.chat(f"{user_prompt}{user_input}")
+            print(f"Agent: {response}")
+        except Exception as e:
+            print(f"⚠️ エラー: {e}")
+
+if __name__ == "__main__":
+    asyncio.run(main())
