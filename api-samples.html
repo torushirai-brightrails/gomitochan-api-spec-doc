@@ -30,8 +30,15 @@
       color: #e0e0e0;
     }
 
-    header, footer {
-      padding: 16px;
+    header {
+      padding: 12px 24px;
+      text-align: center;
+      background: #314a12;
+      color: white;
+    }
+
+    footer {
+      padding: 10px 0;
       text-align: center;
       background: #314a12;
       color: white;
@@ -247,7 +254,7 @@
       <div class="section">
         <h2>📡 事前準備</h2>
         <h3>OpenAIで動かす場合</h3>
-        <h4>インストール</h4>
+        <h4>キーを環境変数へ登録</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-openai-inst')">📋
@@ -256,7 +263,7 @@
 $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"</code></pre>
         </div>
 
-        <h4>実行方法(UTCP)</h4>
+        <h4>インストールと実行方法(UTCP)</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-openai-run-utcp')">📋
@@ -265,7 +272,7 @@ $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"</cod
 $ python sample_utcp_agent_openai.py</code></pre>
         </div>
 
-        <h4>実行方法(MCP)</h4>
+        <h4>インストールと実行方法(MCP)</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-openai-run-mcp')">📋
@@ -275,7 +282,7 @@ $ python sample_mcp_agent_openai.py</code></pre>
         </div>
 
         <h3>Anthropicで動かす場合</h3>
-        <h4>インストール</h4>
+        <h4>キーを環境変数へ登録</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-anthropic-inst')">📋
@@ -284,7 +291,7 @@ $ python sample_mcp_agent_openai.py</code></pre>
 $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"</code></pre>
         </div>
 
-        <h4>実行方法(UTCP)</h4>
+        <h4>インストールと実行方法(UTCP)</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-anthropic-run-utcp')">📋
@@ -293,7 +300,7 @@ $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"</cod
 $ python sample_utcp_agent_anthropic.py</code></pre>
         </div>
 
-        <h4>実行方法(MCP)</h4>
+        <h4>インストールと実行方法(MCP)</h4>
         <div class="execution-code-wrapper">
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-anthropic-run-mcp')">📋
