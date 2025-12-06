@@ -253,8 +253,7 @@
             onclick="copyExecutionCode(this, 'execution-code-openai-inst')">📋
             コピー</button>
           <pre><code id="execution-code-openai-inst">$ export OPENAI_API_KEY="OpenAIで入手したAPIキー"
-$ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"
-$ pip install utcp-agent langchain-openai</code></pre>
+$ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"</code></pre>
         </div>
 
         <h4>実行方法(UTCP)</h4>
@@ -262,7 +261,8 @@ $ pip install utcp-agent langchain-openai</code></pre>
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-openai-run-utcp')">📋
             コピー</button>
-          <pre><code id="execution-code-openai-run-utcp">$ python sample_utcp_agent_openai.py</code></pre>
+          <pre><code id="execution-code-openai-run-utcp">$ pip install utcp-agent langchain-openai
+$ python sample_utcp_agent_openai.py</code></pre>
         </div>
 
         <h4>実行方法(MCP)</h4>
@@ -270,7 +270,8 @@ $ pip install utcp-agent langchain-openai</code></pre>
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-openai-run-mcp')">📋
             コピー</button>
-          <pre><code id="execution-code-openai-run-mcp">$ python sample_mcp_agent_openai.py</code></pre>
+          <pre><code id="execution-code-openai-run-mcp">$ pip install openai
+$ python sample_mcp_agent_openai.py</code></pre>
         </div>
 
         <h3>Anthropicで動かす場合</h3>
@@ -280,8 +281,7 @@ $ pip install utcp-agent langchain-openai</code></pre>
             onclick="copyExecutionCode(this, 'execution-code-anthropic-inst')">📋
             コピー</button>
           <pre><code id="execution-code-anthropic-inst">$ export ANTHROPIC_API_KEY="Anthropicで入手したAPIキー"
-$ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"
-$ pip install utcp-agent langchain-anthropic</code></pre>
+$ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"</code></pre>
         </div>
 
         <h4>実行方法(UTCP)</h4>
@@ -289,7 +289,8 @@ $ pip install utcp-agent langchain-anthropic</code></pre>
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-anthropic-run-utcp')">📋
             コピー</button>
-          <pre><code id="execution-code-anthropic-run-utcp">$ python sample_utcp_agent_anthropic.py</code></pre>
+          <pre><code id="execution-code-anthropic-run-utcp">$ pip install utcp-agent langchain-anthropic
+$ python sample_utcp_agent_anthropic.py</code></pre>
         </div>
 
         <h4>実行方法(MCP)</h4>
@@ -297,7 +298,8 @@ $ pip install utcp-agent langchain-anthropic</code></pre>
           <button class="execution-copy-button"
             onclick="copyExecutionCode(this, 'execution-code-anthropic-run-mcp')">📋
             コピー</button>
-          <pre><code id="execution-code-anthropic-run-mcp">$ python sample_mcp_agent_anthropic.py</code></pre>
+          <pre><code id="execution-code-anthropic-run-mcp">pip install httpx anthropic
+$ python sample_mcp_agent_anthropic.py</code></pre>
         </div>
 
         <h2>🔧 注意事項</h2>
