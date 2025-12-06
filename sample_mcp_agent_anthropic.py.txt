@@ -2,14 +2,14 @@
 Reference: https://github.com/universal-tool-calling-protocol/utcp-agent
 """
 
-"""Basic OpenAI example for UtcpAgent.
+"""Basic Anthropic Claude example for UtcpAgent.
 
-This example demonstrates how to use UtcpAgent with OpenAI GPT models.
+This example demonstrates how to use UtcpAgent with Anthropic Claude models.
 """
 import asyncio
 import logging
 import sys, os
-from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from utcp_agent import UtcpAgent
 
 # Configure logging
@@ -24,14 +24,14 @@ logging.getLogger("utcp").setLevel(logging.WARNING)
 
 
 async def main():
-    """Example using OpenAI GPT models."""
-    print("=== UtcpAgent with OpenAI ===")
+    """Example using Anthropic Claude models."""
+    print("=== UtcpAgent with Anthropic ===")
 
     # Create an UTCP Agent
     agent = await UtcpAgent.create(
-        llm=ChatOpenAI(
-            model="gpt-5-nano", 
-            api_key=os.getenv("OPENAI_API_KEY"),
+        llm=ChatAnthropic(
+            model="claude-3-haiku-20240307",
+            api_key=os.getenv("ANTHROPIC_API_KEY"),
         ),
         utcp_config={
             "manual_call_templates": [
