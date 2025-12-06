@@ -111,21 +111,21 @@
     }
 
     /* 実行方法セクション */
-    .execution-section {
+    .section {
       margin-top: 40px;
     }
 
-    .execution-section h2,
-    .execution-section h3,
-    .execution-section h4 {
+    .section h2,
+    .section h3,
+    .section h4 {
       color: #638122;
       margin-top: 24px;
       margin-bottom: 12px;
     }
 
-    body.dark .execution-section h2,
-    body.dark .execution-section h3,
-    body.dark .execution-section h4 {
+    body.dark .section h2,
+    body.dark .section h3,
+    body.dark .section h4 {
       color: #ffffff;
     }
 
@@ -135,7 +135,7 @@
       overflow: hidden;
     }
 
-    .execution-section pre {
+    .section pre {
       background: #f5f5f5;
       border-radius: 8px;
       padding: 16px;
@@ -143,16 +143,16 @@
       margin: 0;
     }
 
-    body.dark .execution-section pre {
+    body.dark .section pre {
       background: #1e1e1e;
     }
 
-    .execution-section ul {
+    .section ul {
       line-height: 1.8;
       padding-left: 24px;
     }
 
-    .execution-section li {
+    .section li {
       margin-bottom: 8px;
     }
 
@@ -208,12 +208,15 @@
 
   <div class="container">
 
-    <h2>コードサンプル</h2>
-    <p>
-      各サンプルコードについては、以下のタブで切り替えして確認ができます。
-      Pythonでのサンプルコードになります。
-      動作する上での最低限のコードになりますので、より細かいチューニングをする場合は各コードの実装で使用しているライブラリ・仕様を参照してください。
-    </p>
+    <!-- ▼ 説明セクション -->
+    <div class="section"></div>
+      <h2>コードサンプル</h2>
+      <p>
+        各サンプルコードについては、以下のタブで切り替えして確認ができます。
+        Pythonでのサンプルコードになります。
+        動作する上での最低限のコードになりますので、より細かいチューニングをする場合は各コードの実装で使用しているライブラリ・仕様を参照してください。
+      </p>
+    </div>
 
     <!-- ▼ タブ -->
     <div class="tabs">
@@ -230,48 +233,48 @@
     </div>
 
     <!-- ▼ 実行方法セクション -->
-    <div class="execution-section">
+    <div class="section">
       <h2>📡 事前準備</h2>
       <h3>OpenAIで動かす場合</h3>
       <h4>インストール</h4>
       <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode()">📋 コピー</button>
-        <pre><code id="execution-code">$ export OPENAI_API_KEY="OpenAIで入手したAPIキー"
+        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-openai-inst')">📋 コピー</button>
+        <pre><code id="execution-code-openai-inst">$ export OPENAI_API_KEY="OpenAIで入手したAPIキー"
 $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"
 $ pip install utcp-agent langchain-openai</code></pre>
       </div>
 
       <h4>実行方法(UTCP)</h4>
       <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode()">📋 コピー</button>
-        <pre><code id="execution-code">$ python sample_utcp_agent_openai.py</code></pre>
+        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-openai-run-utcp')">📋 コピー</button>
+        <pre><code id="execution-code-openai-run-utcp">$ python sample_utcp_agent_openai.py</code></pre>
       </div>
 
       <h4>実行方法(MCP)</h4>
       <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode()">📋 コピー</button>
-        <pre><code id="execution-code">$ python sample_mcp_agent_openai.py</code></pre>
+        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-openai-run-mcp')">📋 コピー</button>
+        <pre><code id="execution-code-openai-run-mcp">$ python sample_mcp_agent_openai.py</code></pre>
       </div>
 
       <h3>Anthropicで動かす場合</h3>
       <h4>インストール</h4>
       <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode()">📋 コピー</button>
-        <pre><code id="execution-code">$ export ANTHROPIC_API_KEY="Anthropicで入手したAPIキー"
+        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-anthropic-inst')">📋 コピー</button>
+        <pre><code id="execution-code-anthropic-inst">$ export ANTHROPIC_API_KEY="Anthropicで入手したAPIキー"
 $ export GOMITOCHAN_API_KEY="ごみ当ちゃんAPIで入手したAPIキー"
 $ pip install utcp-agent langchain-anthropic</code></pre>
       </div>
 
       <h4>実行方法(UTCP)</h4>
       <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode()">📋 コピー</button>
-        <pre><code id="execution-code">$ python sample_utcp_agent_anthropic.py</code></pre>
+        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-anthropic-run-utcp')">📋 コピー</button>
+        <pre><code id="execution-code-anthropic-run-utcp">$ python sample_utcp_agent_anthropic.py</code></pre>
       </div>
 
       <h4>実行方法(MCP)</h4>
       <div class="execution-code-wrapper">
-        <button class="execution-copy-button" onclick="copyExecutionCode()">📋 コピー</button>
-        <pre><code id="execution-code">$ python sample_mcp_agent_anthropic.py</code></pre>
+        <button class="execution-copy-button" onclick="copyExecutionCode('execution-code-anthropic-run-mcp')">📋 コピー</button>
+        <pre><code id="execution-code-anthropic-run-mcp">$ python sample_mcp_agent_anthropic.py</code></pre>
       </div>
       
       <h2>🔧 注意事項</h2>
@@ -344,8 +347,8 @@ $ pip install utcp-agent langchain-anthropic</code></pre>
       });
     }
 
-    function copyExecutionCode() {
-      const executionCode = document.getElementById("execution-code");
+    function copyExecutionCode(id) {
+      const executionCode = document.getElementById(id);
       const button = document.querySelector(".execution-copy-button");
       
       navigator.clipboard.writeText(executionCode.textContent).then(() => {
