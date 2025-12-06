@@ -1,7 +1,6 @@
 """
 sample_mcp_agent_anthropic.py
 Reference: https://code.claude.com/docs/en/mcp
-
 """
 
 """
