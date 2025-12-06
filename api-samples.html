@@ -40,6 +40,16 @@
       font-size: 1.5em;
       margin: 0;
     }
+    header a {
+      color: #fff;
+      text-decoration: none;
+      background: #314a12;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+    header a:hover { opacity: 0.9; }
 
     footer {
       padding: 10px 0;
@@ -207,35 +217,15 @@
     .execution-copy-button.copied {
       background: #84d12b;
     }
-
-    /* ダーク / ライト切替ボタン */
-    .theme-toggle {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      background: #444;
-      color: white;
-      border: none;
-      z-index: 100;
-    }
-    body.light .theme-toggle {
-      background: #ddd;
-      color: #333;
-    }
   </style>
   </head>
 
   <body class="light">
 
     <header>
-      <h1 style="margin: 0;">ごみ当ちゃん API - コードサンプル</h1>
+      <h1>ごみ当ちゃん API - コードサンプル</h1>
+      <a href="index.html">🏠 ホームに戻る</a>
     </header>
-
-    <!-- ダーク/ライトモード ボタン -->
-    <button class="theme-toggle" onclick="toggleTheme()">🌙 ダークモード</button>
 
     <div class="container">
 
@@ -348,32 +338,31 @@ $ python sample_mcp_agent_anthropic.py</code></pre>
 
     <script>
     /* ===========================
-       ダーク / ライトモード切替
+       ブラウザの設定に応じた自動テーマ適用
        =========================== */
     const body = document.body;
     const prismTheme = document.getElementById("prism-theme");
 
-    function applyTheme(saved) {
-      if (saved === "dark") {
+    function applyTheme(isDark) {
+      if (isDark) {
         body.className = "dark";
         prismTheme.href = "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css";
-        document.querySelector(".theme-toggle").textContent = "☀️ ライトモード";
       } else {
         body.className = "light";
         prismTheme.href = "https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css";
-        document.querySelector(".theme-toggle").textContent = "🌙 ダークモード";
       }
     }
 
-    function toggleTheme() {
-      const current = body.classList.contains("dark") ? "dark" : "light";
-      const next = current === "dark" ? "light" : "dark";
-      localStorage.setItem("theme", next);
-      applyTheme(next);
-    }
+    // ブラウザのカラースキーム設定を検出
+    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // 初期テーマ適用
+    applyTheme(darkModeQuery.matches);
 
-    const savedTheme = localStorage.getItem("theme") || "light";
-    applyTheme(savedTheme);
+    // ブラウザの設定が変更されたときに自動的に切り替え
+    darkModeQuery.addEventListener('change', (e) => {
+      applyTheme(e.matches);
+    });
 
 
     /* ===========================
