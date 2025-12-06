@@ -1,16 +1,17 @@
 """
-Reference: https://github.com/universal-tool-calling-protocol/utcp-agent
+Reference: https://platform.openai.com/docs/guides/tools-connectors-mcp
 """
 
-"""Basic OpenAI example for UtcpAgent.
-
-This example demonstrates how to use UtcpAgent with OpenAI GPT models.
 """
-import asyncio
-import logging
+Basic OpenAI GPT example for MCPAgent.
+
+This example demonstrates how to use MCPAgent with OpenAI GPT models.
+"""
+
 import sys, os
-from langchain_openai import ChatOpenAI
-from utcp_agent import UtcpAgent
+import logging
+import asyncio
+from openai import OpenAI
 
 # Configure logging
 logging.basicConfig(
@@ -19,48 +20,80 @@ logging.basicConfig(
     handlers=[logging.StreamHandler(sys.stdout)],
 )
 
-# Disable UTCP library logging
-logging.getLogger("utcp").setLevel(logging.WARNING)
+# Disable httpx library logging
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 
 async def main():
     """Example using OpenAI GPT models."""
-    print("=== UtcpAgent with OpenAI ===")
+    print("=== McpAgent with OpenAI ===")
 
-    # Create an UTCP Agent
-    agent = await UtcpAgent.create(
-        llm=ChatOpenAI(
-            model="gpt-5-nano", 
-            api_key=os.getenv("OPENAI_API_KEY"),
-        ),
-        utcp_config={
-            "manual_call_templates": [
-                {
-                    "name": "getGarbageItemsByCity",
-                    "call_template_type": "http",
-                    "http_method": "GET",
-                    "url": "https://api-gateway.gomitochan.net/v1/utcp",
-                    "content_type": "application/json",
-                }
-            ],
-            "variables": {
-                "getGarbageItemsByCity_API_KEY": os.getenv("GOMITOCHAN_API_KEY")
-            },
-        },
-    )
+    # Create an MCP Agent
+    OpenAI.api_key = os.getenv("OPENAI_API_KEY")
+    client = OpenAI()
 
-    print("🧠 UTCP Agent ready. Type 'exit' to quit.")
-    while True:
-        user_input = input("You: ").strip()
-        if user_input.lower() in ["exit", "quit", "q"]:
-            print("👋 終了します。")
-            break
-        try:
-            user_prompt = "あなたは、ごみに関すること、ごみに伴う環境への影響や貢献、ごみ出し、ごみ分別、ごみ当番に関する問い合わせのみ返答することができます。それ以外の問い合わせは対応できないので、お断りの返答をしてください。以降が問い合わせの内容になります。=> "
-            response = await agent.chat(f"{user_prompt}{user_input}")
-            print(f"Agent: {response}")
-        except Exception as e:
-            print(f"⚠️ エラー: {e}")
+    # Retain conversation history
+    conversation_history = []
+    # Compile conversation history as a string
+    conversation_text = ""
+
+    print("🧠 MCP Agent ready. Type 'exit' to quit.")
+    try:
+        while True:
+            try:
+                conv_id = None
+
+                # User Input
+                user_input = input("You: ").strip()
+                if not user_input:
+                    continue
+                elif user_input.lower() in ["exit", "quit", "q"]:
+                    print("👋 終了します。")
+                    break
+
+                # Manage conversation history as text strings
+                conversation_text += f"\nYou: {user_input}"
+
+                conversation_history.append({"role": "user", "content": user_input})
+
+                # OpenAI Responses API call
+                resp = client.responses.create(
+                    model="gpt-5-nano",
+                    instructions=(
+                        "あなたは、ごみに関すること、ごみに伴う環境への影響や貢献、ごみ出し、ごみ分別、ごみ当番に関する問い合わせのみ返答することができます。それ以外の問い合わせは対応できないので、お断りの返答をしてください。"
+                    ),
+                    tools=[
+                        {
+                            "type": "mcp",
+                            "server_label": "gomitochan-mcp-server",
+                            "server_description": "ごみ当ちゃんが提供する自治体別ごみ分別検索",
+                            "server_url": "https://api-gateway.gomitochan.net/agentapi/v1/mcp",
+                            "require_approval": "never",
+                            "allowed_tools": ["getGarbageItemsByCity"],
+                            "headers": {"X-Api-Key": os.getenv("GOMITOCHAN_API_KEY")},
+                        },
+                    ],
+                    input=user_input,
+                    previous_response_id=conv_id,
+                )
+
+                # Get conversation ID
+                conv_id = resp.id
+
+                # Model response
+                assistant_message = resp.output_text
+                print(f"Agent: {assistant_message}\n")
+
+                # Add to history
+                conversation_history.append(
+                    {"role": "assistant", "content": assistant_message}
+                )
+            except KeyboardInterrupt:
+                print("👋 終了します。")
+                break
+    except Exception as e:
+        print(f"⚠️ エラー: {e}")
+
 
 if __name__ == "__main__":
     asyncio.run(main())

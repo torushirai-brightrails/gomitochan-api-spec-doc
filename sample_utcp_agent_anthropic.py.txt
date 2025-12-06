@@ -2,7 +2,8 @@
 Reference: https://github.com/universal-tool-calling-protocol/utcp-agent
 """
 
-"""Basic Anthropic Claude example for UtcpAgent.
+"""
+Basic Anthropic Claude example for UtcpAgent.
 
 This example demonstrates how to use UtcpAgent with Anthropic Claude models.
 """

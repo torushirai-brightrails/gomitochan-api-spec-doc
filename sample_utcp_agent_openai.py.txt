@@ -2,7 +2,8 @@
 Reference: https://github.com/universal-tool-calling-protocol/utcp-agent
 """
 
-"""Basic OpenAI example for UtcpAgent.
+"""
+Basic OpenAI example for UtcpAgent.
 
 This example demonstrates how to use UtcpAgent with OpenAI GPT models.
 """
