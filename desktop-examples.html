@@ -516,7 +516,6 @@
        コピー機能
        =========================== */
     function copyCode() {
-      const codeBlock = document.getElementById("code-block");
       const button = document.querySelector(".copy-button");
       navigator.clipboard.writeText(codeBlock.textContent).then(() => {
         button.textContent = "✓ コピー完了";
@@ -545,28 +544,6 @@
        タブ切り替え & ファイル読込
        =========================== */
     const tabs = document.querySelectorAll(".tab");
-    const codeBlock = document.getElementById("code-block");
-
-    function loadFile(file) {
-      if (!file) {
-        codeBlock.textContent = "（コードなし）";
-        Prism.highlightElement(codeBlock);
-        return;
-      }
-      codeBlock.textContent = "読み込み中...";
-      fetch(file)
-        .then(res => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.text();
-        })
-        .then(text => {
-          codeBlock.textContent = text;
-          Prism.highlightElement(codeBlock);
-        })
-        .catch(err => {
-          codeBlock.textContent = "読み込みエラー: " + err;
-        });
-    }
 
     function switchPanel(panelId) {
       document.querySelectorAll(".section-panel").forEach(p => p.classList.remove("active"));
@@ -577,7 +554,6 @@
     // 初期ロード（最初のタブを選択状態に）
     const firstTab = document.querySelector(".tab.active");
     if (firstTab) {
-      loadFile(firstTab.dataset.file);
       switchPanel(firstTab.dataset.panel);
     }
 
@@ -585,7 +561,6 @@
       tab.addEventListener("click", () => {
         tabs.forEach(t => t.classList.remove("active"));
         tab.classList.add("active");
-        loadFile(tab.dataset.file);
         switchPanel(tab.dataset.panel);
       });
     });
@@ -594,11 +569,11 @@
     /* ===========================
        ライトボックス
        =========================== */
-    const lightbox        = document.getElementById("lightbox");
-    const lightboxImg     = document.getElementById("lightbox-img");
-    const lightboxCaption = document.getElementById("lightbox-caption");
 
     function openLightbox(imgEl) {
+      const lightbox        = document.getElementById("lightbox");
+      const lightboxImg     = document.getElementById("lightbox-img");
+      const lightboxCaption = document.getElementById("lightbox-caption");
       lightboxImg.src = imgEl.src;
       lightboxImg.alt = imgEl.alt;
       lightboxCaption.textContent = imgEl.alt || "";
@@ -607,11 +582,14 @@
     }
 
     function closeLightbox(event) {
+      const lightbox        = document.getElementById("lightbox");
       // オーバーレイ自体クリック時のみ閉じる
       if (event.target === lightbox) closeLightboxDirect();
     }
 
     function closeLightboxDirect() {
+      const lightbox        = document.getElementById("lightbox");
+      const lightboxImg     = document.getElementById("lightbox-img");
       lightbox.classList.remove("open");
       document.body.style.overflow = "";
       // 少し待ってからsrcをクリア（アニメーション対策）
